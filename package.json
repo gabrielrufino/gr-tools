@@ -1,0 +1,23 @@
+{
+  "name": "gr-tools",
+  "version": "1.0.0",
+  "description": " A CLI with utilities for me",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielrufino/gr-tools.git"
+  },
+  "keywords": [
+    "CLI",
+    "tools"
+  ],
+  "author": "Gabriel Rufino <contato@gabrierufino.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gabrielrufino/gr-tools/issues"
+  },
+  "homepage": "https://github.com/gabrielrufino/gr-tools#readme"
+}
