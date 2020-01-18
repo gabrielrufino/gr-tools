@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/gabrielrufino/gr-tools/issues"
   },
-  "homepage": "https://github.com/gabrielrufino/gr-tools#readme"
+  "homepage": "https://github.com/gabrielrufino/gr-tools#readme",
+  "dependencies": {
+    "commander": "^4.1.0"
+  }
 }
