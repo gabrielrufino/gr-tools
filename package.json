@@ -22,5 +22,8 @@
   "homepage": "https://github.com/gabrielrufino/gr-tools#readme",
   "dependencies": {
     "commander": "^4.1.0"
+  },
+  "devDependencies": {
+    "standard": "^14.3.1"
   }
 }
