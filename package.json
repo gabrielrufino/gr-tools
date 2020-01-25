@@ -25,7 +25,8 @@
   "homepage": "https://github.com/gabrielrufino/gr-tools#readme",
   "dependencies": {
     "axios": "^0.19.2",
-    "commander": "^4.1.0"
+    "commander": "^4.1.0",
+    "shelljs": "^0.8.3"
   },
   "devDependencies": {
     "standard": "^14.3.1"
