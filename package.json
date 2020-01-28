@@ -10,6 +10,11 @@
   "bin": {
     "gr-tools": "index.js"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "standard"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gabrielrufino/gr-tools.git"
