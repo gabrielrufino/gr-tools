@@ -1,8 +1,24 @@
 const shell = require('shelljs')
 
-const update = () => {
-  shell.exec('npm uninstall -g gr-tools')
-  shell.exec('npm install -g gr-tools')
+const update = software => {
+  switch (software) {
+    case 'system':
+      shell.exec('sudo apt update')
+      shell.exec('sudo apt upgrade -y')
+      shell.exec('sudo apt autoremove -y')
+      shell.exec('sudo apt autoclean')
+      shell.exec('sudo apt clean')
+      break
+    case 'me':
+    case 'gr-tools':
+    case 'cli':
+      shell.exec('npm uninstall -g gr-tools')
+      shell.exec('npm install -g gr-tools')
+      break
+    default:
+      console.log('Invalid software')
+      break
+  }
 }
 
 module.exports = update
