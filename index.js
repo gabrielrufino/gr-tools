@@ -16,8 +16,8 @@ cli
   .action(clone)
 
 cli
-  .command('update')
-  .description('Self update the CLI')
+  .command('update <software>')
+  .description('Update a specified software')
   .action(update)
 
 cli.parse(process.argv)
