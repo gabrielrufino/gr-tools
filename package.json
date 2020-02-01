@@ -1,18 +1,18 @@
 {
   "name": "gr-tools",
-  "version": "1.2.1",
+  "version": "1.3.1",
   "description": " A CLI with utilities for me",
   "main": "index.js",
   "scripts": {
-    "test": "npm test",
-    "standard": "standard"
+    "standard": "standard",
+    "test": "npm test"
   },
   "bin": {
     "gr-tools": "index.js"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "standard"
+      "pre-commit": "npm run standard && git-branch-is --not master"
     }
   },
   "repository": {
@@ -36,6 +36,7 @@
     "shelljs": "^0.8.3"
   },
   "devDependencies": {
+    "git-branch-is": "^3.1.0",
     "husky": "^4.2.1",
     "standard": "^14.3.1"
   }
