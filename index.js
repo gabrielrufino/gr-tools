@@ -7,7 +7,7 @@ const clone = require('./commands/clone')
 const update = require('./commands/update')
 const { version } = require('./package.json')
 
-banner()
+banner({ version })
 
 cli
   .version(version)
