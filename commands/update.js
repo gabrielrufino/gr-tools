@@ -12,8 +12,7 @@ const update = software => {
     case 'me':
     case 'gr-tools':
     case 'cli':
-      shell.exec('npm uninstall -g gr-tools')
-      shell.exec('npm install -g gr-tools')
+      shell.exec('npm install -g gr-tools@latest')
       break
     default:
       console.log('Invalid software')
