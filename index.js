@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 
 const cli = require('commander')
+const compareVersions = require('compare-versions')
+const latestVersion = require('latest-version')
 
 const banner = require('./banner')
 const clone = require('./commands/clone')
 const screenshot = require('./commands/screenshot')
 const setup = require('./commands/setup')
 const update = require('./commands/update')
-const { version } = require('./package.json')
+const { name, version } = require('./package.json')
 
 banner({ version })
 
@@ -35,3 +37,15 @@ cli
   .action(setup)
 
 cli.parse(process.argv)
+
+const checkForUpdate = async () => {
+  const newVersion = await latestVersion(name)
+
+  const updateAvailable = compareVersions(newVersion, version)
+
+  if (updateAvailable) {
+    console.log(`New version available: ${newVersion}`)
+  }
+}
+
+checkForUpdate()
