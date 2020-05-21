@@ -1,6 +1,6 @@
 {
   "name": "gr-tools",
-  "version": "1.6.3",
+  "version": "1.7.0",
   "description": " A CLI with utilities for me",
   "main": "index.js",
   "scripts": {
