@@ -5,6 +5,7 @@ const compareVersions = require('compare-versions')
 const latestVersion = require('latest-version')
 
 const banner = require('./banner')
+const clean = require('./commands/clean')
 const clone = require('./commands/clone')
 const screenshot = require('./commands/screenshot')
 const setup = require('./commands/setup')
@@ -20,6 +21,11 @@ cli
   .command('clone <origin>')
   .description('Clone all my repositories in the origin specified')
   .action(clone)
+
+cli
+  .command('clean')
+  .description('Empty trash, etc...')
+  .action(clean)
 
 cli
   .command('screenshot')
