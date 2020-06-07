@@ -4,18 +4,68 @@
 
 ---
 
-# gr-tools
- Utilities CLI for me
+# GR Tools
 
-## Linking
+Commands to make my life easier
 
-```bash
-$ npm link
+## Requirements
+
+* Node.js
+* NPM
+
+## Used in
+
+* Ubuntu
+* Linux Mint
+
+## Installing
+
+```
+$ npm install -g gr-tools
 ```
 
 ## Commands
 
-### Update system and dependencies
+### Clone my github repositories
+
 ```
-gr-tools update system
+$ gr-tools clone github
 ```
+
+### Area screenshot
+
+```
+$ gr-tools screenshot
+```
+
+### Update system
+
+```
+$ gr-tools update system
+```
+
+### Update GR Tools
+
+```
+$ gr-tools update gr-tools
+
+# or
+
+$ gr-tools update me
+```
+
+### Setup typescript environment
+
+```
+$ gr-tools setup typescript
+```
+
+### Setup development environment
+
+```
+$ gr-tools setup development
+```
+
+## LICENSE
+
+The MIT License

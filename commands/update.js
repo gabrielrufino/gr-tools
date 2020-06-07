@@ -11,7 +11,6 @@ const update = software => {
       break
     case 'me':
     case 'gr-tools':
-    case 'cli':
       shell.exec('npm install -g gr-tools@latest')
       break
     default:
