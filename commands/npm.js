@@ -25,7 +25,7 @@ const subcommands = {
 
     packageJson.version = [major, minor, patch].join('.')
 
-    fs.writeFileSync(path.join(process.cwd(), '/package.json'), JSON.stringify(packageJson, null, 2), { encoding: 'utf8' })
+    fs.writeFileSync(path.join(process.cwd(), '/package.json'), `${JSON.stringify(packageJson, null, 2)}\n`, { encoding: 'utf8' })
   }
 }
 
