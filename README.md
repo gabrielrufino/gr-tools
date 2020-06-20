@@ -66,6 +66,12 @@ $ gr-tools setup typescript
 $ gr-tools setup development
 ```
 
+### Up version of a package.json
+
+```
+$ gr-tools npm up-version
+```
+
 ## LICENSE
 
 The MIT License

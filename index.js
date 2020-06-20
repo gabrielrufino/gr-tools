@@ -7,6 +7,7 @@ const latestVersion = require('latest-version')
 const banner = require('./banner')
 const clean = require('./commands/clean')
 const clone = require('./commands/clone')
+const npm = require('./commands/npm')
 const screenshot = require('./commands/screenshot')
 const setup = require('./commands/setup')
 const update = require('./commands/update')
@@ -26,6 +27,11 @@ cli
   .command('clean')
   .description('Empty trash, etc...')
   .action(clean)
+
+cli
+  .command('npm <subcommand>')
+  .description('Actions related to npm packages')
+  .action(npm)
 
 cli
   .command('screenshot')
