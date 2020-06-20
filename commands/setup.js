@@ -12,7 +12,7 @@ const setup = environment => {
     /**
      * Global npm packages
      */
-    shell.exec('npm i -g firebase-tools http-server gtop yarn jest')
+    shell.exec('npm i -g firebase-tools http-server gtop yarn jest lerna')
     /**
      * Snap softwares
      */
