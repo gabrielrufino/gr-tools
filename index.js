@@ -16,6 +16,7 @@ const { name, version } = require('./package.json')
 banner({ version })
 
 cli
+  .name(name)
   .version(version)
 
 cli
