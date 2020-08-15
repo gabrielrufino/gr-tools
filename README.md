@@ -4,7 +4,7 @@
 
 ---
 
-# GR Tools
+# gr-tools
 
 Commands to make my life easier
 
