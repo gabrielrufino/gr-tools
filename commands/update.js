@@ -1,17 +1,46 @@
+const inquirer = require('inquirer')
+const ora = require('ora')
 const shell = require('shelljs')
 
-const update = software => {
+const updateSystem = async ({ logs }) => {
+  const { password } = await inquirer.prompt([
+    {
+      type: 'password',
+      name: 'password',
+      message: 'User password: ',
+      validate: p => p ? true : 'Enter the password'
+    }
+  ])
+
+  const spinner = ora({
+    text: 'Updating system'
+  })
+
+  !logs && spinner.start()
+
+  shell.exec(`echo ${password} | sudo -S apt update`, { silent: !logs }, () => {
+    shell.exec(`echo ${password} | sudo -S apt upgrade -y`, { silent: !logs }, () => {
+      shell.exec(`echo ${password} | sudo -S apt autoremove -y`, { silent: !logs }, () => {
+        shell.exec(`echo ${password} | sudo -S apt clean`, { silent: !logs }, () => {
+          !logs && spinner.succeed('System updated')
+        })
+      })
+    })
+  })
+}
+
+const updateMe = ({ logs }) => {
+  shell.exec('npm install -g gr-tools@latest', { silent: !logs })
+}
+
+const update = (software, commandObject) => {
   switch (software) {
     case 'system':
-      shell.exec('sudo apt update')
-      shell.exec('sudo apt upgrade -y')
-      shell.exec('sudo apt autoremove -y')
-      shell.exec('sudo apt autoclean')
-      shell.exec('sudo apt clean')
+      updateSystem(commandObject)
       break
     case 'me':
     case 'gr-tools':
-      shell.exec('npm install -g gr-tools@latest')
+      updateMe(commandObject)
       break
     default:
       console.log('Invalid software')
