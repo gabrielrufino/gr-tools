@@ -41,6 +41,7 @@ cli
 
 cli
   .command('update <software>')
+  .option('-l, --logs', 'Prints updating logs')
   .description('Update a specified software')
   .action(update)
 
