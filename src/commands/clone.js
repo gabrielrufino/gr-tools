@@ -1,33 +1,67 @@
 const axios = require('axios')
+const ora = require('ora')
 const shell = require('shelljs')
+const util = require('util')
 
-const clone = async (origin, { npmInstall, user }) => {
-  if (origin === 'github') {
-    const { data } = await axios.get(`https://api.github.com/users/${user}/repos`)
+const exec = util.promisify(shell.exec)
 
-    const repositories = data
-      .filter(repo => !repo.archived)
+const clone = async (origin, { logs, npmInstall, user }) => {
+  try {
+    if (origin === 'github') {
+      const gettingRepositories = ora('Loading repositories')
+      !logs && gettingRepositories.start()
 
-    shell.mkdir('github')
-    shell.cd('github')
+      const { data } = await axios.get(`https://api.github.com/users/${user}/repos`)
 
-    repositories.forEach(({ clone_url: cloneUrl, name }) => {
-      shell.exec(`git clone ${cloneUrl}`)
+      const repositories = data
+        .filter(repo => !repo.archived)
 
-      if (npmInstall) {
-        shell.cd(name)
+      !logs && gettingRepositories.succeed('Repositories loaded')
 
-        if (shell.ls('package.json').code === 0) {
-          shell.exec('npm install')
+      const creatingFolder = ora('Creating folder \'github\'')
+      !logs && creatingFolder.start()
+
+      shell.mkdir('github')
+      shell.cd('github')
+
+      !logs && creatingFolder.succeed('Folder \'github\' created')
+
+      for (const repository of repositories) {
+        const { clone_url: cloneUrl, name } = repository
+
+        const cloningRepository = ora(`Cloning repository ${name}`)
+        !logs && cloningRepository.start()
+
+        await exec(`git clone ${cloneUrl}`, { silent: !logs })
+
+        !logs && cloningRepository.succeed(`Repository ${name} cloned`)
+
+        if (npmInstall) {
+          shell.cd(name)
+
+          if (shell.ls('package.json').code === 0) {
+            const installingNpmDependencies = ora('Installing npm dependencies')
+            !logs && installingNpmDependencies.start()
+
+            try {
+              await exec('npm install', { silent: !logs })
+
+              !logs && installingNpmDependencies.succeed('Npm dependencies installed')
+            } catch {
+              !logs && installingNpmDependencies.fail('Npm dependencies not installed')
+            }
+          }
+
+          shell.cd('..')
         }
-
-        shell.cd('..')
       }
-    })
 
-    shell.cd('..')
-  } else {
-    console.error('Invalid origin')
+      shell.cd('..')
+    } else {
+      console.error('Invalid origin')
+    }
+  } catch (error) {
+    console.error(error)
   }
 }
 

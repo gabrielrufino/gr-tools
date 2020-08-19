@@ -21,6 +21,7 @@ cli
 
 cli
   .command('clone <origin>')
+  .option('-l, --logs', 'Prints cloning logs')
   .option('--npm-install', 'Executes \'npm install\' on repositories with package.json file')
   .option('--user <user>', 'Origin user', 'gabrielrufino')
   .description('Clone all my repositories or another user\'s repositories from the specified origin')
@@ -49,6 +50,7 @@ cli
 
 cli
   .command('setup <environment>')
+  .option('-l, --logs', 'Prints setup logs')
   .description('Makes the setup of an specific environment')
   .action(setup)
 
