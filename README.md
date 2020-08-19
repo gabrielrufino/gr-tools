@@ -72,6 +72,28 @@ $ gr-tools setup development
 $ gr-tools npm up-version
 ```
 
+## CONTRIBUTING
+
+Contributions are very welcome!
+
+### Scripts
+
+#### Development
+
+```bash
+$ npm run dev
+```
+
+Removes possible `gr-tools` globally installed and executes `npm link` for testing while developing.
+
+#### Deploy
+
+```
+$ npm run deploy
+```
+
+Executes `npm unlink`, publish to npm, and installs the newest `gr-tools` globally ready for use!
+
 ## LICENSE
 
 The MIT License

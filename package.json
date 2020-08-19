@@ -4,6 +4,8 @@
   "description": "Commands to make my life easier",
   "main": "index.js",
   "scripts": {
+    "deploy:": "npm unlink && npm publish && npm i -g gr-tools",
+    "dev": "npm uninstall -g gr-tools && npm link",
     "standard": "standard",
     "test": "npm test"
   },
