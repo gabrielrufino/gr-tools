@@ -1,9 +1,9 @@
 const axios = require('axios')
 const shell = require('shelljs')
 
-const clone = async origin => {
+const clone = async (origin, { user }) => {
   if (origin === 'github') {
-    const { data } = await axios.get('https://api.github.com/users/gabrielrufino/repos')
+    const { data } = await axios.get(`https://api.github.com/users/${user}/repos`)
 
     const urls = data.filter(repo => !repo.archived).map(repo => repo.clone_url)
 

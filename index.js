@@ -21,6 +21,7 @@ cli
 
 cli
   .command('clone <origin>')
+  .option('--user <user>', 'Origin user', 'gabrielrufino')
   .description('Clone all my repositories in the origin specified')
   .action(clone)
 
