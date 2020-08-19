@@ -1,6 +1,9 @@
 const inquirer = require('inquirer')
 const ora = require('ora')
 const shell = require('shelljs')
+const util = require('util')
+
+const exec = util.promisify(shell.exec)
 
 const updateSystem = async ({ logs }) => {
   const { password } = await inquirer.prompt([
@@ -18,15 +21,12 @@ const updateSystem = async ({ logs }) => {
 
   !logs && spinner.start()
 
-  shell.exec(`echo ${password} | sudo -S apt update`, { silent: !logs }, () => {
-    shell.exec(`echo ${password} | sudo -S apt upgrade -y`, { silent: !logs }, () => {
-      shell.exec(`echo ${password} | sudo -S apt autoremove -y`, { silent: !logs }, () => {
-        shell.exec(`echo ${password} | sudo -S apt clean`, { silent: !logs }, () => {
-          !logs && spinner.succeed('System updated')
-        })
-      })
-    })
-  })
+  await exec(`echo ${password} | sudo -S apt update`, { silent: !logs })
+  await exec(`echo ${password} | sudo -S apt upgrade -y`, { silent: !logs })
+  await exec(`echo ${password} | sudo -S apt autoremove -y`, { silent: !logs })
+  await exec(`echo ${password} | sudo -S apt clean`, { silent: !logs })
+
+  !logs && spinner.succeed('System updated')
 }
 
 const updateMe = ({ logs }) => {
