@@ -28,8 +28,16 @@ $ npm install -g gr-tools
 
 ### Clone my github repositories
 
+All my repositories from github:
+
 ```
 $ gr-tools clone github
+```
+
+All repositories of `filipedeschamps` from github:
+
+```
+$ gr-tools clone github --user=filipedeschamps
 ```
 
 ### Area screenshot

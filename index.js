@@ -22,7 +22,7 @@ cli
 cli
   .command('clone <origin>')
   .option('--user <user>', 'Origin user', 'gabrielrufino')
-  .description('Clone all my repositories in the origin specified')
+  .description('Clone all my repositories or another user\'s repositories from the specified origin')
   .action(clone)
 
 cli
