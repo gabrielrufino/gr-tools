@@ -1,17 +1,28 @@
 const axios = require('axios')
 const shell = require('shelljs')
 
-const clone = async (origin, { user }) => {
+const clone = async (origin, { npmInstall, user }) => {
   if (origin === 'github') {
     const { data } = await axios.get(`https://api.github.com/users/${user}/repos`)
 
-    const urls = data.filter(repo => !repo.archived).map(repo => repo.clone_url)
+    const repositories = data
+      .filter(repo => !repo.archived)
 
     shell.mkdir('github')
     shell.cd('github')
 
-    urls.forEach(url => {
-      shell.exec(`git clone ${url}`)
+    repositories.forEach(({ clone_url: cloneUrl, name }) => {
+      shell.exec(`git clone ${cloneUrl}`)
+
+      if (npmInstall) {
+        shell.cd(name)
+
+        if (shell.ls('package.json').code === 0) {
+          shell.exec('npm install')
+        }
+
+        shell.cd('..')
+      }
     })
 
     shell.cd('..')
