@@ -29,14 +29,14 @@ const updateSystem = async ({ logs }) => {
   !logs && spinner.succeed('System updated')
 }
 
-const updateMe = ({ logs }) => {
+const updateMe = async ({ logs }) => {
   const spinner = ora({
     text: 'Updating gr-tools'
   })
 
   !logs && spinner.start()
 
-  shell.exec('npm install -g gr-tools@latest', { silent: !logs })
+  await exec('npm install -g gr-tools@latest', { silent: !logs })
 
   !logs && spinner.succeed('gr-tools updated')
 }
