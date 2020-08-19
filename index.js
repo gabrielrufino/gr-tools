@@ -21,7 +21,9 @@ cli
 
 cli
   .command('clone <origin>')
-  .description('Clone all my repositories in the origin specified')
+  .option('--npm-install', 'Executes \'npm install\' on repositories with package.json file')
+  .option('--user <user>', 'Origin user', 'gabrielrufino')
+  .description('Clone all my repositories or another user\'s repositories from the specified origin')
   .action(clone)
 
 cli

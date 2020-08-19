@@ -28,8 +28,22 @@ $ npm install -g gr-tools
 
 ### Clone my github repositories
 
+Clone all my repositories from github:
+
 ```
 $ gr-tools clone github
+```
+
+Clone all my repositories from github executing `npm install` on repositories with `package.json` file:
+
+```
+$ gr-tools clone github --npm-install
+```
+
+Clone all repositories of `filipedeschamps` from github:
+
+```
+$ gr-tools clone github --user=filipedeschamps
 ```
 
 ### Area screenshot
@@ -71,6 +85,28 @@ $ gr-tools setup development
 ```
 $ gr-tools npm up-version
 ```
+
+## CONTRIBUTING
+
+Contributions are very welcome!
+
+### Scripts
+
+#### Development
+
+```bash
+$ npm run dev
+```
+
+Removes possible `gr-tools` globally installed and executes `npm link` for testing while developing.
+
+#### Deploy
+
+```
+$ npm run deploy
+```
+
+Executes `npm unlink`, publish to npm, and installs the newest `gr-tools` globally ready for use!
 
 ## LICENSE
 
