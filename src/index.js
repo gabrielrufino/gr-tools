@@ -11,7 +11,7 @@ const npm = require('./commands/npm')
 const screenshot = require('./commands/screenshot')
 const setup = require('./commands/setup')
 const update = require('./commands/update')
-const { name, version } = require('./package.json')
+const { name, version } = require('../package.json')
 
 banner({ version })
 

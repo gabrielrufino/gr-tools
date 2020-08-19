@@ -2,7 +2,7 @@
   "name": "gr-tools",
   "version": "1.86.0",
   "description": "Commands to make my life easier",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "deploy": "npm unlink && npm publish && npm i -g gr-tools",
     "dev": "npm uninstall -g gr-tools && npm link",
@@ -10,7 +10,7 @@
     "test": "npm test"
   },
   "bin": {
-    "gr-tools": "index.js"
+    "gr-tools": "src/index.js"
   },
   "husky": {
     "hooks": {
