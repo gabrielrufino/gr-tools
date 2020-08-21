@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 
 const cli = require('commander')
-const compareVersions = require('compare-versions')
-const latestVersion = require('latest-version')
 
 const banner = require('./banner')
+const checkForUpdate = require('./helpers/check-for-update')
 const clean = require('./commands/clean')
 const clone = require('./commands/clone')
 const npm = require('./commands/npm')
@@ -56,14 +55,4 @@ cli
 
 cli.parse(process.argv)
 
-const checkForUpdate = async () => {
-  const newVersion = await latestVersion(name)
-
-  const updateAvailable = compareVersions(newVersion, version)
-
-  if (updateAvailable) {
-    console.log(`New version available: ${newVersion}`)
-  }
-}
-
-checkForUpdate()
+checkForUpdate({ name, version })
