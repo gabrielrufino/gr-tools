@@ -2,10 +2,14 @@ const shell = require('shelljs')
 const ora = require('ora')
 const util = require('util')
 
+const verifyBin = require('../helpers/verify-bin')
+
 const exec = util.promisify(shell.exec)
 
 const setup = async (environment, { logs }) => {
   if (environment === 'typescript') {
+    verifyBin(['npm'])
+
     const installing = ora('Installing typescript environment')
     !logs && installing.start()
 
@@ -16,6 +20,8 @@ const setup = async (environment, { logs }) => {
       !logs && installing.fail('TypeScript environment not installed')
     }
   } else if (environment === 'development') {
+    verifyBin(['sudo', 'apt', 'npm'])
+
     const installing = ora('Installing development environment')
 
     !logs && installing.start()

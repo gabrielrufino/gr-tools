@@ -3,9 +3,13 @@ const ora = require('ora')
 const shell = require('shelljs')
 const util = require('util')
 
+const verifyBin = require('../helpers/verify-bin')
+
 const exec = util.promisify(shell.exec)
 
 const updateSystem = async ({ logs }) => {
+  verifyBin(['echo', 'sudo', 'apt'])
+
   const { password } = await inquirer.prompt([
     {
       type: 'password',
@@ -30,6 +34,8 @@ const updateSystem = async ({ logs }) => {
 }
 
 const updateMe = async ({ logs }) => {
+  verifyBin(['npm'])
+
   const spinner = ora({
     text: 'Updating gr-tools'
   })
