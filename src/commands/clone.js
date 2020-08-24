@@ -3,9 +3,13 @@ const ora = require('ora')
 const shell = require('shelljs')
 const util = require('util')
 
+const verifyBin = require('../helpers/verify-bin')
+
 const exec = util.promisify(shell.exec)
 
 const clone = async (origin, { logs, npmInstall, user }) => {
+  verifyBin(['git', ...(npmInstall ? ['npm'] : [])])
+
   try {
     if (origin === 'github') {
       const gettingRepositories = ora('Loading repositories')
