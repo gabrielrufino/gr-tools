@@ -25,7 +25,7 @@ const setup = async (environment, { logs }) => {
        * Installing snap
        */
       await exec('sudo apt update', { silent: !logs })
-      await exec('sudo apt install snapd', { silent: !logs })
+      await exec('sudo apt install git snapd', { silent: !logs })
       /**
        * Global npm packages
        */
