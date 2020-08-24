@@ -1,5 +1,6 @@
-const shell = require('shelljs')
+const inquirer = require('inquirer')
 const ora = require('ora')
+const shell = require('shelljs')
 const util = require('util')
 
 const verifyBin = require('../helpers/verify-bin')
@@ -22,6 +23,15 @@ const setup = async (environment, { logs }) => {
   } else if (environment === 'development') {
     verifyBin(['sudo', 'apt', 'npm'])
 
+    const { password } = await inquirer.prompt([
+      {
+        type: 'password',
+        name: 'password',
+        message: 'User password: ',
+        validate: p => p ? true : 'Enter the password'
+      }
+    ])
+
     const installing = ora('Installing development environment')
 
     !logs && installing.start()
@@ -30,8 +40,8 @@ const setup = async (environment, { logs }) => {
       /**
        * Installing snap
        */
-      await exec('sudo apt update', { silent: !logs })
-      await exec('sudo apt install git snapd', { silent: !logs })
+      await exec(`echo ${password} | sudo -S apt update`, { silent: !logs })
+      await exec(`echo ${password} | sudo -S apt install git snapd`, { silent: !logs })
       /**
        * Global npm packages
        */
@@ -39,10 +49,10 @@ const setup = async (environment, { logs }) => {
       /**
        * Snap softwares
        */
-      await exec('sudo snap install --classic code', { silent: !logs })
-      await exec('sudo snap install insomnia', { silent: !logs })
-      await exec('sudo snap install android-studio --classic', { silent: !logs })
-      await exec('sudo snap install mysql-workbench-community --candidate', { silent: !logs })
+      await exec(`echo ${password} | sudo -S snap install --classic code`, { silent: !logs })
+      await exec(`echo ${password} | sudo -S snap install insomnia`, { silent: !logs })
+      await exec(`echo ${password} | sudo -S snap install android-studio --classic`, { silent: !logs })
+      await exec(`echo ${password} | sudo -S snap install mysql-workbench-community --candidate`, { silent: !logs })
 
       !logs && installing.succeed('Development environment installed')
     } catch {
