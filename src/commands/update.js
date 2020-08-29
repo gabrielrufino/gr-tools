@@ -4,6 +4,7 @@ const shell = require('shelljs')
 const util = require('util')
 
 const notify = require('../helpers/notify')
+const validatePassword = require('../helpers/validate-password')
 const verifyBin = require('../helpers/verify-bin')
 
 const exec = util.promisify(shell.exec)
@@ -19,6 +20,8 @@ const updateSystem = async ({ logs }) => {
       validate: p => p ? true : 'Enter the password'
     }
   ])
+
+  await validatePassword(password)
 
   const spinner = ora({
     text: 'Updating system'
