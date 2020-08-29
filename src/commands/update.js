@@ -3,6 +3,7 @@ const ora = require('ora')
 const shell = require('shelljs')
 const util = require('util')
 
+const notify = require('../helpers/notify')
 const verifyBin = require('../helpers/verify-bin')
 
 const exec = util.promisify(shell.exec)
@@ -31,6 +32,8 @@ const updateSystem = async ({ logs }) => {
   await exec(`echo ${password} | sudo -S apt clean`, { silent: !logs })
 
   !logs && spinner.succeed('System updated')
+
+  notify({ message: 'System updated' })
 }
 
 const updateMe = async ({ logs }) => {
@@ -45,6 +48,8 @@ const updateMe = async ({ logs }) => {
   await exec('npm install -g gr-tools@latest', { silent: !logs })
 
   !logs && spinner.succeed('gr-tools updated')
+
+  notify({ message: 'gr-tools updated' })
 }
 
 const update = (software, commandObject) => {
