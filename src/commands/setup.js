@@ -3,6 +3,8 @@ const ora = require('ora')
 const shell = require('shelljs')
 const util = require('util')
 
+const notify = require('../helpers/notify')
+const validatePassword = require('../helpers/validate-password')
 const verifyBin = require('../helpers/verify-bin')
 
 const exec = util.promisify(shell.exec)
@@ -17,6 +19,8 @@ const setup = async (environment, { logs }) => {
     try {
       await exec('npm -g install typescript ts-node', { silent: !logs })
       !logs && installing.succeed('TypeScript environment installed')
+
+      notify({ message: 'TypeScript environment installed' })
     } catch {
       !logs && installing.fail('TypeScript environment not installed')
     }
@@ -31,6 +35,8 @@ const setup = async (environment, { logs }) => {
         validate: p => p ? true : 'Enter the password'
       }
     ])
+
+    await validatePassword(password)
 
     const installing = ora('Installing development environment')
 
@@ -55,6 +61,8 @@ const setup = async (environment, { logs }) => {
       await exec(`echo ${password} | sudo -S snap install mysql-workbench-community --candidate`, { silent: !logs })
 
       !logs && installing.succeed('Development environment installed')
+
+      notify({ message: 'Development environment installed' })
     } catch {
       !logs && installing.fail('Development environment not installed')
     }

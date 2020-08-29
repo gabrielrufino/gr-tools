@@ -3,6 +3,7 @@ const ora = require('ora')
 const shell = require('shelljs')
 const util = require('util')
 
+const notify = require('../helpers/notify')
 const verifyBin = require('../helpers/verify-bin')
 
 const exec = util.promisify(shell.exec)
@@ -61,6 +62,8 @@ const clone = async (origin, { logs, npmInstall, user }) => {
       }
 
       shell.cd('..')
+
+      notify({ message: 'github cloned' })
     } else {
       console.error('Invalid origin')
     }
