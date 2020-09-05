@@ -10,6 +10,10 @@ describe(__filename, () => {
   const message = 'Some text here'
   const level = 'normal'
 
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   test('Should be a function', () => {
     expect(notify).toBeInstanceOf(Function)
   })
@@ -19,6 +23,12 @@ describe(__filename, () => {
 
     expect(exec)
       .toBeCalledWith(`notify-send --urgency=${level} gr-tools "${message}"`)
+  })
+
+  test('Should throw an erro when doesn\'t receive the message', () => {
+    expect(
+      () => notify({})
+    ).toThrow()
   })
 
   test('Should throw an error when receiving an invalid level', () => {
