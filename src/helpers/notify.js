@@ -5,7 +5,7 @@ const notify = ({ message, level = 'normal' }) => {
     throw new Error('Invalid level. Valid levels: low, normal and critical')
   }
 
-  exec(`notify-send gr-tools --urgency=${level} "${message}"`)
+  exec(`notify-send --urgency=${level} gr-tools "${message}"`)
 }
 
 module.exports = notify
