@@ -1,12 +1,10 @@
 const axios = require('axios')
 const ora = require('ora')
 const shell = require('shelljs')
-const util = require('util')
 
 const notify = require('../helpers/notify')
 const verifyBin = require('../helpers/verify-bin')
-
-const exec = util.promisify(shell.exec)
+const execPromise = require('../helpers/exec-promise')
 
 const clone = async (origin, { logs, npmInstall, user }) => {
   verifyBin(['git', ...(npmInstall ? ['npm'] : [])])
@@ -37,7 +35,7 @@ const clone = async (origin, { logs, npmInstall, user }) => {
         const cloningRepository = ora(`Cloning repository ${name}`)
         !logs && cloningRepository.start()
 
-        await exec(`git clone ${cloneUrl}`, { silent: !logs })
+        await execPromise(`git clone ${cloneUrl}`, { silent: !logs })
 
         !logs && cloningRepository.succeed(`Repository ${name} cloned`)
 
@@ -49,7 +47,7 @@ const clone = async (origin, { logs, npmInstall, user }) => {
             !logs && installingNpmDependencies.start()
 
             try {
-              await exec('npm install', { silent: !logs })
+              await execPromise('npm install', { silent: !logs })
 
               !logs && installingNpmDependencies.succeed('Npm dependencies installed')
             } catch {
