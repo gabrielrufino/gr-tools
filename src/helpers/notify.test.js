@@ -25,7 +25,14 @@ describe(__filename, () => {
       .toBeCalledWith(`notify-send --urgency=${level} gr-tools "${message}"`)
   })
 
-  test('Should throw an erro when doesn\'t receive the message', () => {
+  test('Should assume \'normal\' as the default value for level', () => {
+    notify({ message })
+
+    expect(exec)
+      .toBeCalledWith(`notify-send --urgency=normal gr-tools "${message}"`)
+  })
+
+  test('Should throw an error when doesn\'t receive the message', () => {
     expect(
       () => notify({})
     ).toThrow()
