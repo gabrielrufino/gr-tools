@@ -1,11 +1,9 @@
-const shell = require('shelljs')
-const util = require('util')
+const execPromise = require('./exec-promise')
+const isRequired = require('./is-required')
 
-const exec = util.promisify(shell.exec)
-
-const validatePassword = async password => {
+const validatePassword = async (password = isRequired('password')) => {
   try {
-    await exec(`echo ${password} | sudo -S ls`, { silent: true })
+    await execPromise(`echo ${password} | sudo -S ls`, { silent: true })
   } catch {
     throw new Error('Wrong password')
   }
