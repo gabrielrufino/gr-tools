@@ -1,13 +1,10 @@
 const inquirer = require('inquirer')
 const ora = require('ora')
-const shell = require('shelljs')
-const util = require('util')
 
+const execPromise = require('../helpers/exec-promise')
 const notify = require('../helpers/notify')
 const validatePassword = require('../helpers/validate-password')
 const verifyBin = require('../helpers/verify-bin')
-
-const exec = util.promisify(shell.exec)
 
 const updateSystem = async ({ logs }) => {
   verifyBin(['echo', 'sudo', 'apt'])
@@ -29,10 +26,10 @@ const updateSystem = async ({ logs }) => {
 
   !logs && spinner.start()
 
-  await exec(`echo ${password} | sudo -S apt update`, { silent: !logs })
-  await exec(`echo ${password} | sudo -S apt upgrade -y`, { silent: !logs })
-  await exec(`echo ${password} | sudo -S apt autoremove -y`, { silent: !logs })
-  await exec(`echo ${password} | sudo -S apt clean`, { silent: !logs })
+  await execPromise(`echo ${password} | sudo -S apt update`, { silent: !logs })
+  await execPromise(`echo ${password} | sudo -S apt upgrade -y`, { silent: !logs })
+  await execPromise(`echo ${password} | sudo -S apt autoremove -y`, { silent: !logs })
+  await execPromise(`echo ${password} | sudo -S apt clean`, { silent: !logs })
 
   !logs && spinner.succeed('System updated')
 
@@ -48,7 +45,7 @@ const updateMe = async ({ logs }) => {
 
   !logs && spinner.start()
 
-  await exec('npm install -g gr-tools@latest', { silent: !logs })
+  await execPromise('npm install -g gr-tools@latest', { silent: !logs })
 
   !logs && spinner.succeed('gr-tools updated')
 
