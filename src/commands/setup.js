@@ -1,13 +1,10 @@
 const inquirer = require('inquirer')
 const ora = require('ora')
-const shell = require('shelljs')
-const util = require('util')
 
+const execPromise = require('../helpers/exec-promise')
 const notify = require('../helpers/notify')
 const validatePassword = require('../helpers/validate-password')
 const verifyBin = require('../helpers/verify-bin')
-
-const exec = util.promisify(shell.exec)
 
 const setup = async (environment, { logs }) => {
   if (environment === 'typescript') {
@@ -17,7 +14,7 @@ const setup = async (environment, { logs }) => {
     !logs && installing.start()
 
     try {
-      await exec('npm -g install typescript ts-node', { silent: !logs })
+      await execPromise('npm -g install typescript ts-node', { silent: !logs })
       !logs && installing.succeed('TypeScript environment installed')
 
       notify({ message: 'TypeScript environment installed' })
@@ -46,19 +43,19 @@ const setup = async (environment, { logs }) => {
       /**
        * Installing snap
        */
-      await exec(`echo ${password} | sudo -S apt update`, { silent: !logs })
-      await exec(`echo ${password} | sudo -S apt install git snapd`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S apt update`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S apt install git snapd`, { silent: !logs })
       /**
        * Global npm packages
        */
-      await exec('npm i -g firebase-tools http-server gtop yarn jest lerna', { silent: !logs })
+      await execPromise('npm i -g firebase-tools http-server gtop yarn jest lerna', { silent: !logs })
       /**
        * Snap softwares
        */
-      await exec(`echo ${password} | sudo -S snap install --classic code`, { silent: !logs })
-      await exec(`echo ${password} | sudo -S snap install insomnia`, { silent: !logs })
-      await exec(`echo ${password} | sudo -S snap install android-studio --classic`, { silent: !logs })
-      await exec(`echo ${password} | sudo -S snap install mysql-workbench-community --candidate`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S snap install --classic code`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S snap install insomnia`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S snap install android-studio --classic`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S snap install mysql-workbench-community --candidate`, { silent: !logs })
 
       !logs && installing.succeed('Development environment installed')
 
