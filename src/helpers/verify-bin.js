@@ -1,8 +1,10 @@
 const { which } = require('shelljs')
 
-const verifyBin = clis => {
-  if (!clis.every(cli => which(cli))) {
-    throw new Error(`Required CLIs: ${clis.join(', ')}`)
+const isRequired = require('./is-required')
+
+const verifyBin = (bins = isRequired('bins')) => {
+  if (!bins.every(bin => which(bin))) {
+    throw new Error(`Required bins: ${bins.join(', ')}`)
   }
 }
 
