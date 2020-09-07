@@ -63,6 +63,19 @@ const setup = async (environment, { logs }) => {
     } catch {
       !logs && installing.fail('Development environment not installed')
     }
+  } else if (environment === 'nvm') {
+    verifyBin(['curl', 'bash'])
+
+    const installing = ora('Installing nvm environment')
+    !logs && installing.start()
+
+    try {
+      await execPromise('curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash', { silent: !logs })
+
+      !logs && installing.succeed('nvm environment installed')
+    } catch {
+      !logs && installing.fail('nvm environment not installed')
+    }
   } else {
     throw new Error('Environment not found')
   }
