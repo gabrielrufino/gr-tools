@@ -38,12 +38,12 @@
     "figlet": "^1.5.0",
     "inquirer": "^7.3.3",
     "latest-version": "^5.1.0",
-    "ora": "^5.0.0",
+    "ora": "^5.1.0",
     "shelljs": "^0.8.4"
   },
   "devDependencies": {
     "git-branch-is": "^3.1.0",
-    "husky": "^4.2.5",
+    "husky": "^4.3.0",
     "jest": "^26.4.2",
     "standard": "^14.3.4"
   },
