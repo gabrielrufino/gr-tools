@@ -1,3 +1,5 @@
+'use strict'
+
 const execPromise = require('./exec-promise')
 const isRequired = require('./is-required')
 

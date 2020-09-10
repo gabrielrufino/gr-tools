@@ -1,3 +1,5 @@
+'use strict'
+
 const compareVersions = require('compare-versions')
 const latestVersion = require('latest-version')
 

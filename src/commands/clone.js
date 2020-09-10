@@ -1,3 +1,5 @@
+'use strict'
+
 const axios = require('axios')
 const ora = require('ora')
 const shell = require('shelljs')
