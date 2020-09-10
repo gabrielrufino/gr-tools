@@ -1,3 +1,5 @@
+'use strict'
+
 const { exec } = require('shelljs')
 const { promisify } = require('util')
 

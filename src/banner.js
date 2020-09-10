@@ -1,3 +1,5 @@
+'use strict'
+
 const figlet = require('figlet')
 
 const isRequired = require('./helpers/is-required')

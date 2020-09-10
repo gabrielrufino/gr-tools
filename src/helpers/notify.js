@@ -1,3 +1,5 @@
+'use strict'
+
 const { exec } = require('shelljs')
 
 const isRequired = require('./is-required')
