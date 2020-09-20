@@ -9,9 +9,9 @@ const verifyBin = require('../helpers/verify-bin')
 const execPromise = require('../helpers/exec-promise')
 
 const clone = async (origin, { logs, npmInstall, user }) => {
-  verifyBin(['git', ...(npmInstall ? ['npm'] : [])])
-
   try {
+    verifyBin(['git', ...(npmInstall ? ['npm'] : [])])
+
     if (origin === 'github') {
       const gettingRepositories = ora('Loading repositories')
       !logs && gettingRepositories.start()
@@ -68,7 +68,7 @@ const clone = async (origin, { logs, npmInstall, user }) => {
       console.error('Invalid origin')
     }
   } catch (error) {
-    console.error(error)
+    notify({ message: 'An unexpected error happened', level: 'critical' })
   }
 }
 
