@@ -84,14 +84,21 @@ const setupNvm = async ({ logs }) => {
 }
 
 const setup = async (environment, { logs }) => {
-  if (environment === 'typescript') {
-    await setupTypescript({ logs })
-  } else if (environment === 'development') {
-    await setupDevelopment({ logs })
-  } else if (environment === 'nvm') {
-    await setupNvm({ logs })
-  } else {
-    throw new Error('Environment not found')
+  try {
+    if (environment === 'typescript') {
+      await setupTypescript({ logs })
+    } else if (environment === 'development') {
+      await setupDevelopment({ logs })
+    } else if (environment === 'nvm') {
+      await setupNvm({ logs })
+    } else {
+      throw new Error('Environment not found')
+    }
+  } catch {
+    const message = 'An unexpected error happened'
+
+    console.error(message)
+    notify({ message, level: 'critical' })
   }
 }
 
