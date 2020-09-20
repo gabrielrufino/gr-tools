@@ -67,7 +67,7 @@ const clone = async (origin, { logs, npmInstall, user }) => {
     } else {
       console.error('Invalid origin')
     }
-  } catch (error) {
+  } catch {
     notify({ message: 'An unexpected error happened', level: 'critical' })
   }
 }
