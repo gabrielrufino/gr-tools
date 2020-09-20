@@ -55,17 +55,24 @@ const updateMe = async ({ logs }) => {
 }
 
 const update = (software, commandObject) => {
-  switch (software) {
-    case 'system':
-      updateSystem(commandObject)
-      break
-    case 'me':
-    case 'gr-tools':
-      updateMe(commandObject)
-      break
-    default:
-      console.log('Invalid software')
-      break
+  try {
+    switch (software) {
+      case 'system':
+        updateSystem(commandObject)
+        break
+      case 'me':
+      case 'gr-tools':
+        updateMe(commandObject)
+        break
+      default:
+        console.log('Invalid software')
+        break
+    }
+  } catch {
+    const message = 'An unexpected error happened'
+
+    console.error(message)
+    notify({ message, level: 'critical' })
   }
 }
 
