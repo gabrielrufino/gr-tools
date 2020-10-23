@@ -60,6 +60,9 @@ const setupDevelopment = async ({ logs }) => {
     await execPromise(`echo ${password} | sudo -S snap install android-studio --classic`, { silent: !logs })
     await execPromise(`echo ${password} | sudo -S snap install mysql-workbench-community --candidate`, { silent: !logs })
 
+    await execPromise('git config --global user.name "Gabriel Rufino"', { silent: !logs })
+    await execPromise('git config --global user.email "contato@gabrielrufino.com"', { silent: !logs })
+
     !logs && installing.succeed('Development environment installed')
 
     notify({ message: 'Development environment installed' })
