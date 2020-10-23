@@ -44,7 +44,7 @@
   "devDependencies": {
     "git-branch-is": "^3.1.0",
     "husky": "^4.3.0",
-    "jest": "^26.5.3",
+    "jest": "^26.6.0",
     "standard": "^14.3.4"
   },
   "standard": {
