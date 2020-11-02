@@ -44,7 +44,7 @@ cli
   .action(update)
 
 cli
-  .command('setup <environment>')
+  .command('setup [environment]')
   .option('-l, --logs', 'Prints setup logs')
   .description('Makes the setup of an specific environment')
   .action(setup)
