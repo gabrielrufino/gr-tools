@@ -7,7 +7,7 @@
     "deploy": "npm unlink && npm publish && npm i -g gr-tools",
     "dev": "npm uninstall -g gr-tools && npm link",
     "standard": "standard",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "bin": {
     "gr-tools": "src/index.js"
