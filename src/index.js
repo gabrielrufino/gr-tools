@@ -8,6 +8,7 @@ const banner = require('./banner')
 const checkForUpdate = require('./helpers/check-for-update')
 const clean = require('./commands/clean')
 const clone = require('./commands/clone')
+const scan = require('./commands/scan')
 const screenshot = require('./commands/screenshot')
 const setup = require('./commands/setup')
 const update = require('./commands/update')
@@ -42,6 +43,11 @@ cli
   .option('-l, --logs', 'Prints updating logs')
   .description('Update a specified software')
   .action(update)
+
+cli
+  .command('scan <environment>')
+  .description('Give some analysis of the environment')
+  .action(scan)
 
 cli
   .command('setup [environment]')

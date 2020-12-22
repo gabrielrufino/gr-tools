@@ -1,13 +1,13 @@
 {
   "name": "gr-tools",
-  "version": "2.4.3",
+  "version": "2.5.0",
   "description": "Commands to make my life easier",
   "main": "src/index.js",
   "scripts": {
     "deploy": "npm unlink && npm publish && npm i -g gr-tools",
     "dev": "npm uninstall -g gr-tools && npm link",
     "standard": "standard",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "bin": {
     "gr-tools": "src/index.js"
@@ -38,6 +38,7 @@
     "figlet": "^1.5.0",
     "inquirer": "^7.3.3",
     "latest-version": "^5.1.0",
+    "local-devices": "^3.1.0",
     "ora": "^5.1.0",
     "shelljs": "^0.8.4"
   },
