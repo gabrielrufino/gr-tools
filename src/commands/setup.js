@@ -79,7 +79,7 @@ const environments = {
 
       try {
         await execPromise('curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash', { silent: !logs })
-        await execPromise(`echo ${password} | sudo -S apt remove node npm`, { silent: !logs })
+        await execPromise(`echo ${password} | sudo -S apt remove nodejs npm`, { silent: !logs })
         await execPromise(`echo ${password} | sudo -S apt autoremove`, { silent: !logs })
 
         !logs && installing.succeed('nvm environment installed')
