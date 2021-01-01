@@ -86,8 +86,9 @@ const environments = {
         await execPromise('npm install -g gr-tools')
 
         !logs && installing.succeed('nvm environment installed')
-      } catch {
+      } catch (error) {
         !logs && installing.fail('nvm environment not installed')
+        console.error(error.message)
       }
     }
   },
