@@ -63,21 +63,21 @@ const environments = {
     title: 'NVM - Node Version Manager',
     key: 'nvm',
     setup: async ({ logs }) => {
-      verifyBin(['curl', 'bash'])
-
-      const { password } = await inquirer.prompt([
-        {
-          type: 'password',
-          name: 'password',
-          message: 'User password: ',
-          validate: p => p ? true : 'Enter the password'
-        }
-      ])
-
-      const installing = ora('Installing nvm environment')
-      !logs && installing.start()
-
       try {
+        verifyBin(['curl', 'bash'])
+
+        const { password } = await inquirer.prompt([
+          {
+            type: 'password',
+            name: 'password',
+            message: 'User password: ',
+            validate: p => p ? true : 'Enter the password'
+          }
+        ])
+
+        const installing = ora('Installing nvm environment')
+        !logs && installing.start()
+
         await execPromise('curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash', { silent: !logs })
         await execPromise(`echo ${password} | sudo npm uninstall -g gr-tools`)
         await execPromise(`echo ${password} | sudo -S apt remove nodejs npm`, { silent: !logs })
