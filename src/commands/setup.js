@@ -39,7 +39,7 @@ const environments = {
         /**
          * Global npm packages
          */
-        await execPromise('npm i -g firebase-tools http-server gtop yarn jest lerna', { silent: !logs })
+        await execPromise('npm i -g firebase-tools http-server gtop yarn lerna', { silent: !logs })
         /**
          * Snap softwares
          */
