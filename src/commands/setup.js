@@ -80,7 +80,7 @@ const environments = {
         !logs && installing.start()
 
         await execPromise(`echo ${password} | sudo -S snap install --edge gh`, { silent: !logs })
-        await execPromise('snap connect gh:ssh-keys', { silent: !logs })
+        await execPromise(`echo ${password} | sudo snap connect gh:ssh-keys', { silent: !logs })
 
         !logs && installing.succeed('gh environment installed')
       } catch (error) {
