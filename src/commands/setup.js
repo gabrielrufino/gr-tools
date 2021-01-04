@@ -59,6 +59,35 @@ const environments = {
       }
     }
   },
+  gh: {
+    title: 'gh - Github CLI',
+    key: 'gh',
+    setup: async ({ logs }) => {
+      const installing = ora('Installing gh environment')
+      !logs && installing.start()
+
+      try {
+        verifyBin(['snap'])
+
+        const { password } = await inquirer.prompt([
+          {
+            type: 'password',
+            name: 'password',
+            message: 'User password: ',
+            validate: p => p ? true : 'Enter the password'
+          }
+        ])
+
+        await execPromise(`echo ${password} | sudo snap install --edge gh`, { silent: !logs })
+        await execPromise('snap connect gh:ssh-keys', { silent: !logs })
+
+        !logs && installing.succeed('gh environment installed')
+      } catch (error) {
+        !logs && installing.fail('gh environment not installed')
+        console.error(error.message)
+      }
+    }
+  },
   nvm: {
     title: 'NVM - Node Version Manager',
     key: 'nvm',
@@ -113,7 +142,7 @@ const environments = {
   }
 }
 
-const setup = async (environment, { logs }) => {
+const setup = async (environment, { logs }) => { 
   try {
     if (environments[environment]) {
       await environments[environment].setup({ logs })
