@@ -64,7 +64,6 @@ const environments = {
     key: 'gh',
     setup: async ({ logs }) => {
       const installing = ora('Installing gh environment')
-      !logs && installing.start()
 
       try {
         verifyBin(['snap'])
@@ -77,6 +76,8 @@ const environments = {
             validate: p => p ? true : 'Enter the password'
           }
         ])
+
+        !logs && installing.start()
 
         await execPromise(`echo ${password} | sudo snap install --edge gh`, { silent: !logs })
         await execPromise('snap connect gh:ssh-keys', { silent: !logs })
