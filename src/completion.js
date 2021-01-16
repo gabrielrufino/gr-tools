@@ -1,9 +1,19 @@
 const omelette = require('omelette')
 
-const completion = omelette('gr-tools <command>')
+const commands = require('./commands')
+
+const completion = omelette('gr-tools <command> <target>')
 
 completion.on('command', ({ reply }) => {
-  reply(['update', 'clone'])
+  reply(commands.map(({ name }) => name))
+})
+
+completion.on('target', ({ before, reply }) => {
+  const command = commands.find(({ name }) => name === before)
+
+  if (command.targets) {
+    reply(command.targets)
+  }
 })
 
 module.exports = completion
