@@ -8,11 +8,14 @@ const banner = require('./banner')
 const checkForUpdate = require('./helpers/check-for-update')
 const clean = require('./commands/clean')
 const clone = require('./commands/clone')
+const completion = require('./completion')
 const scan = require('./commands/scan')
 const screenshot = require('./commands/screenshot')
 const setup = require('./commands/setup')
 const update = require('./commands/update')
 const { name, version } = require('../package.json')
+
+completion.init()
 
 banner({ version })
 
