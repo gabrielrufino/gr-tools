@@ -7,6 +7,7 @@
     "deploy": "npm unlink && npm publish && npm i -g gr-tools",
     "dev": "npm uninstall -g gr-tools && npm link",
     "standard": "standard",
+    "postinstall": "sh ./src/scripts/postinstall.sh",
     "test": "jest --coverage"
   },
   "bin": {
