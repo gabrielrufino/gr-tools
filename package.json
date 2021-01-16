@@ -1,12 +1,13 @@
 {
   "name": "gr-tools",
-  "version": "2.7.5",
+  "version": "2.8.0",
   "description": "Commands to make my life easier",
   "main": "src/index.js",
   "scripts": {
     "deploy": "npm unlink && npm publish && npm i -g gr-tools",
     "dev": "npm uninstall -g gr-tools && npm link",
     "standard": "standard",
+    "postinstall": "sh ./src/scripts/postinstall.sh",
     "test": "jest --coverage"
   },
   "bin": {
@@ -32,19 +33,20 @@
   },
   "homepage": "https://github.com/gabrielrufino/gr-tools#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "commander": "^6.2.1",
     "compare-versions": "^3.6.0",
     "figlet": "^1.5.0",
     "inquirer": "^7.3.3",
     "latest-version": "^5.1.0",
     "local-devices": "^3.1.0",
+    "omelette": "^0.4.15-1",
     "ora": "^5.2.0",
     "shelljs": "^0.8.4"
   },
   "devDependencies": {
     "git-branch-is": "^3.1.0",
-    "husky": "^4.3.6",
+    "husky": "^4.3.8",
     "jest": "^26.6.3",
     "standard": "^14.3.4"
   },
