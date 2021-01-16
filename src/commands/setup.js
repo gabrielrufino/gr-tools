@@ -143,7 +143,7 @@ const environments = {
   }
 }
 
-const setup = async (environment, { logs }) => { 
+const setup = async (environment, { logs }) => {
   try {
     if (environments[environment]) {
       await environments[environment].setup({ logs })
