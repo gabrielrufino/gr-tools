@@ -166,7 +166,7 @@ const environments = {
     title: 'ZSH - Oh My Zsh',
     key: 'zsh',
     setup: async ({ logs }) => {
-      verifyBin(['apt', 'sh', 'wget', 'git'])
+      verifyBin(['apt', 'sh', 'curl', 'git'])
 
       if (!logs) {
         console.warn('The options --logs is enable on zsh setup')
@@ -174,7 +174,7 @@ const environments = {
 
       try {
         exec('sudo apt -y install  zsh')
-        exec('sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"')
+        exec('sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"')
 
         notify({ message: 'zsh environment installed' })
       } catch {
