@@ -2,7 +2,6 @@
 
 const inquirer = require('inquirer')
 const ora = require('ora')
-const { exec } = require('shelljs')
 
 const execPromise = require('../helpers/exec-promise')
 const notify = require('../helpers/notify')
@@ -166,17 +165,16 @@ const environments = {
     title: 'ZSH - Oh My Zsh',
     key: 'zsh',
     setup: async ({ logs }) => {
-      verifyBin(['apt', 'sh', 'curl', 'git'])
+      verifyBin(['apt', 'sh', 'wget', 'git'])
 
       if (!logs) {
         console.warn('The options --logs is enable on zsh setup')
       }
 
       try {
-        exec('sudo apt -y install  zsh')
-        // exec('sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"')
-        exec('git clone https://github.com/ohmyzsh/ohmyzsh')
-        exec('sh ./ohmyzsh/tools/install.sh')
+        await execPromise('sudo apt -y install  zsh')
+        await execPromise('sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"')
+        await execPromise('chsh -s $(which zsh)')
 
         notify({ message: 'zsh environment installed' })
       } catch {
