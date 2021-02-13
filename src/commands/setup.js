@@ -174,7 +174,9 @@ const environments = {
 
       try {
         exec('sudo apt -y install  zsh')
-        exec('sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"')
+        // exec('sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"')
+        exec('git clone https://github.com/ohmyzsh/ohmyzsh')
+        exec('sh ./ohmyzsh/tools/install.sh')
 
         notify({ message: 'zsh environment installed' })
       } catch {
