@@ -140,6 +140,30 @@ const environments = {
         !logs && installing.fail('TypeScript environment not installed')
       }
     }
+  },
+  virtualbox: {
+    title: 'VirtualBox',
+    key: 'virtualbox',
+    setup: async ({ logs }) => {
+      verifyBin(['apt-key', 'wget'])
+
+      const installing = ora('Installing VirtualBox environment')
+      !logs && installing.start()
+
+      try {
+        await execPromise('sudo apt update', { silent: !logs })
+        await execPromise('wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -', { silent: !logs })
+        await execPromise('wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -', { silent: !logs })
+        await execPromise('echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list', { silent: !logs })
+        await execPromise('sudo apt update', { silent: !logs })
+        await execPromise('sudo apt-get install virtualbox-6.1', { silent: !logs })
+
+        !logs && installing.succeed('VirtualBox environment installed')
+        notify({ message: 'VirtualBox environment installed' })
+      } catch (error) {
+        !logs && installing.fail('VirtualBox environment not installed')
+      }
+    }
   }
 }
 
