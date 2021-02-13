@@ -160,6 +160,27 @@ const environments = {
         !logs && installing.fail('VirtualBox environment not installed')
       }
     }
+  },
+  zsh: {
+    title: 'ZSH - Oh My Zsh',
+    key: 'zsh',
+    setup: async ({ logs }) => {
+      verifyBin(['apt', 'sh', 'wget'])
+
+      if (!logs) {
+        console.warn('The options --logs is enable on zsh setup')
+      }
+
+      try {
+        await execPromise('sudo apt install zsh')
+        await execPromise('sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"')
+        await execPromise('sudo apt install zsh')
+
+        notify({ message: 'zsh environment installed' })
+      } catch {
+        notify({ message: 'zsh environment not installed' })
+      }
+    }
   }
 }
 
