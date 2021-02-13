@@ -167,6 +167,15 @@ const environments = {
     setup: async ({ logs }) => {
       verifyBin(['apt', 'sh', 'wget', 'git'])
 
+      const { password } = await inquirer.prompt([
+        {
+          type: 'password',
+          name: 'password',
+          message: 'User password: ',
+          validate: p => p ? true : 'Enter the password'
+        }
+      ])
+
       if (!logs) {
         console.warn('The options --logs is enable on zsh setup')
       }
@@ -174,7 +183,7 @@ const environments = {
       try {
         await execPromise('sudo apt -y install  zsh')
         await execPromise('sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"')
-        await execPromise('chsh -s $(which zsh)')
+        await execPromise(`echo ${password} | chsh -s $(which zsh)`)
 
         notify({ message: 'zsh environment installed' })
       } catch {
