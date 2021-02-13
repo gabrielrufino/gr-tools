@@ -172,9 +172,8 @@ const environments = {
       }
 
       try {
-        await execPromise('sudo apt install zsh')
+        await execPromise('sudo apt -y install  zsh')
         await execPromise('sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"')
-        await execPromise('sudo apt install zsh')
 
         notify({ message: 'zsh environment installed' })
       } catch {
