@@ -165,7 +165,7 @@ const environments = {
     title: 'ZSH - Oh My Zsh',
     key: 'zsh',
     setup: async ({ logs }) => {
-      verifyBin(['apt', 'sh', 'wget'])
+      verifyBin(['apt', 'sh', 'wget', 'git'])
 
       if (!logs) {
         console.warn('The options --logs is enable on zsh setup')
