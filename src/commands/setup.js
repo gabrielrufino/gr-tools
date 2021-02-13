@@ -2,6 +2,7 @@
 
 const inquirer = require('inquirer')
 const ora = require('ora')
+const { exec } = require('shelljs')
 
 const execPromise = require('../helpers/exec-promise')
 const notify = require('../helpers/notify')
@@ -172,8 +173,8 @@ const environments = {
       }
 
       try {
-        await execPromise('sudo apt -y install  zsh')
-        await execPromise('sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"')
+        exec('sudo apt -y install  zsh')
+        exec('sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"')
 
         notify({ message: 'zsh environment installed' })
       } catch {
