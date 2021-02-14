@@ -133,7 +133,7 @@ const environments = {
         verifyBin(['apt'])
 
         await execPromise('sudo apt update', { silent: !logs })
-        await execPromise('sudo apt install mysql-server', { silent: !logs })
+        await execPromise('sudo apt install -y mysql-server', { silent: !logs })
 
         !logs && installing.succeed('mysql environment installed')
         notify({ message: 'mysql environment installed' })
