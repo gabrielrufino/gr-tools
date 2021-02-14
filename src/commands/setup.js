@@ -152,7 +152,7 @@ const environments = {
 
       try {
         await execPromise('sudo apt update', { silent: !logs })
-        await execPromise('sudo apt install virtualbox', { silent: !logs })
+        await execPromise('sudo apt -y install virtualbox', { silent: !logs })
 
         !logs && installing.succeed('VirtualBox environment installed')
         notify({ message: 'VirtualBox environment installed' })
