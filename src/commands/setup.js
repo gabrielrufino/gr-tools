@@ -47,7 +47,6 @@ const environments = {
         await execPromise(`echo ${password} | sudo -S snap install --classic code`, { silent: !logs })
         await execPromise(`echo ${password} | sudo -S snap install insomnia`, { silent: !logs })
         await execPromise(`echo ${password} | sudo -S snap install android-studio --classic`, { silent: !logs })
-        await execPromise(`echo ${password} | sudo -S snap install mysql-workbench-community --candidate`, { silent: !logs })
 
         await execPromise('git config --global user.name "Gabriel Rufino"', { silent: !logs })
         await execPromise('git config --global user.email "contato@gabrielrufino.com"', { silent: !logs })
@@ -212,6 +211,32 @@ const environments = {
         notify({ message: 'VirtualBox environment installed' })
       } catch (error) {
         !logs && installing.fail('VirtualBox environment not installed')
+      }
+    }
+  },
+  workbench: {
+    title: 'MySQL Workbench',
+    key: 'workbench',
+    setup: async ({ logs }) => {
+      const { password } = await inquirer.prompt([
+        {
+          type: 'password',
+          name: 'password',
+          message: 'User password: ',
+          validate: p => p ? true : 'Enter the password'
+        }
+      ])
+
+      const installing = ora('Installing Workbench environment')
+      !logs && installing.start()
+
+      try {
+        await execPromise(`echo ${password} | sudo -S snap install mysql-workbench-community --candidate`, { silent: !logs })
+
+        !logs && installing.succeed('Workbench environment installed')
+        notify({ message: 'Workbench environment installed' })
+      } catch (error) {
+        !logs && installing.fail('Workbench environment not installed')
       }
     }
   },
