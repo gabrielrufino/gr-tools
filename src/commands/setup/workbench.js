@@ -22,6 +22,9 @@ const workbench = {
 
     try {
       await execPromise(`echo ${password} | sudo -S snap install mysql-workbench-community --candidate`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S snap connect mysql-workbench-community:password-manager-service`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S snap connect mysql-workbench-community:ssh-keys`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S snap connect mysql-workbench-community:cups-control`, { silent: !logs })
 
       !logs && installing.succeed('Workbench environment installed')
       notify({ message: 'Workbench environment installed' })
