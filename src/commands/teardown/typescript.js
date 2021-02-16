@@ -8,7 +8,6 @@ const verifyBin = require('../../helpers/verify-bin')
 
 const typescript = {
   title: 'TypeScript',
-  key: 'typescript',
   teardown: async ({ logs }) => {
     verifyBin(['npm'])
 

@@ -12,7 +12,6 @@ const verifyBin = require('../../helpers/verify-bin')
 const environments = {
   development: {
     title: 'Development',
-    key: 'development',
     setup: async ({ logs }) => {
       verifyBin(['sudo', 'apt', 'npm'])
 
@@ -61,7 +60,6 @@ const environments = {
   },
   gh: {
     title: 'gh - Github CLI',
-    key: 'gh',
     setup: async ({ logs }) => {
       const installing = ora('Installing gh environment')
 
@@ -91,7 +89,6 @@ const environments = {
   },
   mongodb: {
     title: 'MongoDB',
-    key: 'mongodb',
     setup: async ({ logs }) => {
       const installing = ora('Installing mongodb environment')
       !logs && installing.start()
@@ -123,7 +120,6 @@ const environments = {
   },
   mysql: {
     title: 'MySQL',
-    key: 'mysql',
     setup: async ({ logs }) => {
       const installing = ora('Installing mysql environment')
       !logs && installing.start()
@@ -144,7 +140,6 @@ const environments = {
   },
   nvm: {
     title: 'NVM - Node Version Manager',
-    key: 'nvm',
     setup: async ({ logs }) => {
       const installing = ora('Installing nvm environment')
       !logs && installing.start()
@@ -178,7 +173,6 @@ const environments = {
   typescript: require('./typescript'),
   virtualbox: {
     title: 'VirtualBox',
-    key: 'virtualbox',
     setup: async ({ logs }) => {
       verifyBin(['apt'])
 
@@ -199,7 +193,6 @@ const environments = {
   workbench: require('./workbench'),
   zsh: {
     title: 'ZSH - Oh My Zsh',
-    key: 'zsh',
     setup: async ({ logs }) => {
       verifyBin(['apt', 'sh', 'wget', 'git'])
 
@@ -238,9 +231,9 @@ const setup = async (environment, { logs }) => {
         type: 'checkbox',
         name: 'environment',
         message: 'Select environments to setup',
-        choices: Object.values(environments).map(env => ({
+        choices: Object.entries(environments).map(([key, env]) => ({
           name: env.title,
-          value: env.key
+          value: key
         }))
       })
 

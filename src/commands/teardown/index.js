@@ -18,9 +18,9 @@ const teardown = async (environment, { logs }) => {
         type: 'checkbox',
         name: 'environment',
         message: 'Select environments to setup',
-        choices: Object.values(environments).map(env => ({
+        choices: Object.entries(environments).map(([key, env]) => ({
           name: env.title,
-          value: env.key
+          value: key
         }))
       })
 

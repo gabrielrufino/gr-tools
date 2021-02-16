@@ -8,7 +8,6 @@ const notify = require('../../helpers/notify')
 
 const workbench = {
   title: 'MySQL Workbench',
-  key: 'workbench',
   teardown: async ({ logs }) => {
     const { password } = await inquirer.prompt([
       {
