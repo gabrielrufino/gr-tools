@@ -13,6 +13,7 @@ const scan = require('./commands/scan')
 const screenshot = require('./commands/screenshot')
 const setup = require('./commands/setup')
 const update = require('./commands/update')
+const teardown = require('./commands/teardown/')
 const { name, version } = require('../package.json')
 
 completion.init()
@@ -57,6 +58,12 @@ cli
   .option('-l, --logs', 'Prints setup logs')
   .description('Makes the setup of an specific environment')
   .action(setup)
+
+cli
+  .command('teardown [environment]')
+  .option('-l, --logs', 'Prints teardown logs')
+  .description('Makes the teardown of an specific environment')
+  .action(teardown)
 
 cli.parse(process.argv)
 
