@@ -5,7 +5,8 @@ const inquirer = require('inquirer')
 const notify = require('../../helpers/notify')
 
 const environments = {
-  typescript: require('./typescript')
+  typescript: require('./typescript'),
+  workbench: require('./workbench')
 }
 
 const teardown = async (environment, { logs }) => {
