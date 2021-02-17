@@ -16,7 +16,7 @@ const mongodb = {
       verifyBin(['apt'])
 
       await execPromise('sudo service mongod stop', { silent: !logs })
-      await execPromise('sudo apt purge mongodb-org*', { silent: !logs })
+      await execPromise('sudo apt-get purge mongodb-org*', { silent: !logs })
       await execPromise('sudo rm -R /var/log/mongodb', { silent: !logs })
       await execPromise('sudo rm -R /var/lib/mongodb', { silent: !logs })
 
