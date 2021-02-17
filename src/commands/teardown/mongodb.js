@@ -13,7 +13,7 @@ const mongodb = {
     !logs && installing.start()
 
     try {
-      verifyBin(['wget', 'echo', 'apt'])
+      verifyBin(['apt'])
 
       await execPromise('sudo service mongod stop', { silent: !logs })
       await execPromise('sudo apt purge mongodb-org*', { silent: !logs })
