@@ -1,3 +1,5 @@
 .github
 assets
 coverage
+
+src/**/*.test.js
