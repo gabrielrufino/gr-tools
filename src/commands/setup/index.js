@@ -90,26 +90,7 @@ const environments = {
       }
     }
   },
-  mysql: {
-    title: 'MySQL',
-    setup: async ({ logs }) => {
-      const installing = ora('Installing mysql environment')
-      !logs && installing.start()
-
-      try {
-        verifyBin(['apt'])
-
-        await execPromise('sudo apt update', { silent: !logs })
-        await execPromise('sudo apt install -y mysql-server', { silent: !logs })
-
-        !logs && installing.succeed('mysql environment installed')
-        notify({ message: 'mysql environment installed' })
-      } catch (error) {
-        !logs && installing.fail('mysql environment not installed')
-        console.error(error.message)
-      }
-    }
-  },
+  mysql: require('./mysql'),
   nvm: {
     title: 'NVM - Node Version Manager',
     setup: async ({ logs }) => {
