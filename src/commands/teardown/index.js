@@ -5,6 +5,7 @@ const inquirer = require('inquirer')
 const notify = require('../../helpers/notify')
 
 const environments = {
+  gh: require('./gh'),
   typescript: require('./typescript'),
   workbench: require('./workbench')
 }
