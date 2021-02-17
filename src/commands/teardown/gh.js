@@ -25,7 +25,7 @@ const gh = {
 
       !logs && installing.start()
 
-      await execPromise(`echo ${password} | sudo -S snap remove --edge gh`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S snap remove gh`, { silent: !logs })
 
       !logs && installing.succeed('gh environment removed')
     } catch (error) {
