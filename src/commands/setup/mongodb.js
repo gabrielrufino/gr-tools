@@ -16,7 +16,7 @@ const mongodb = {
     try {
       verifyBin(['wget', 'echo', 'apt'])
 
-      await execPromise('sudo apt install gnupg', { silent: !logs })
+      await execPromise('sudo apt install -y gnupg', { silent: !logs })
       await execPromise('wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -', { silent: !logs })
 
       const { distro, release } = await si.osInfo()
