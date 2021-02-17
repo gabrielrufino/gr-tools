@@ -6,6 +6,7 @@ const notify = require('../../helpers/notify')
 
 const environments = {
   gh: require('./gh'),
+  mysql: require('./mysql'),
   typescript: require('./typescript'),
   workbench: require('./workbench')
 }
