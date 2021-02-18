@@ -8,6 +8,7 @@ const environments = {
   gh: require('./gh'),
   mongodb: require('./mongodb'),
   mysql: require('./mysql'),
+  nvm: require('./nvm'),
   typescript: require('./typescript'),
   workbench: require('./workbench')
 }
