@@ -28,7 +28,7 @@ const nvm = {
       await execPromise(`echo ${password} | sudo -S npm uninstall -g gr-tools`)
       await execPromise(`echo ${password} | sudo -S apt remove -y nodejs npm`, { silent: !logs })
       await execPromise(`echo ${password} | sudo -S apt autoremove -y`, { silent: !logs })
-      await execPromise('bash', { silent: !logs })
+      await execPromise('. ~/.bashrc', { silent: !logs })
       await execPromise('nvm install v14')
       await execPromise('npm install -g gr-tools')
 
