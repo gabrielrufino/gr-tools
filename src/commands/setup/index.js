@@ -62,25 +62,7 @@ const environments = {
   mysql: require('./mysql'),
   nvm: require('./nvm'),
   typescript: require('./typescript'),
-  virtualbox: {
-    title: 'VirtualBox',
-    setup: async ({ logs }) => {
-      verifyBin(['apt'])
-
-      const installing = ora('Installing VirtualBox environment')
-      !logs && installing.start()
-
-      try {
-        await execPromise('sudo apt update', { silent: !logs })
-        await execPromise('sudo apt -y install virtualbox', { silent: !logs })
-
-        !logs && installing.succeed('VirtualBox environment installed')
-        notify({ message: 'VirtualBox environment installed' })
-      } catch (error) {
-        !logs && installing.fail('VirtualBox environment not installed')
-      }
-    }
-  },
+  virtualbox: require('./virtualbox'),
   workbench: require('./workbench'),
   zsh: require('./zsh')
 }
