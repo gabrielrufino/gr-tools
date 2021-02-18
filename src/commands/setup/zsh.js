@@ -25,7 +25,7 @@ const zsh = {
     }
 
     try {
-      await execPromise('sudo apt -y install  zsh')
+      await execPromise(`echo ${password} | sudo -S apt -y install zsh`)
       await execPromise('sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"')
       await execPromise(`echo ${password} | chsh -s $(which zsh)`)
 
