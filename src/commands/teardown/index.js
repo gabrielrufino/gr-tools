@@ -10,7 +10,8 @@ const environments = {
   mysql: require('./mysql'),
   nvm: require('./nvm'),
   typescript: require('./typescript'),
-  workbench: require('./workbench')
+  workbench: require('./workbench'),
+  zsh: require('./zsh')
 }
 
 const teardown = async (environment, { logs }) => {
