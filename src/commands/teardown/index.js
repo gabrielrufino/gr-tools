@@ -10,6 +10,7 @@ const environments = {
   mysql: require('./mysql'),
   nvm: require('./nvm'),
   typescript: require('./typescript'),
+  virtualbox: require('./virtualbox'),
   workbench: require('./workbench'),
   zsh: require('./zsh')
 }
