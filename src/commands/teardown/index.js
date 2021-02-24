@@ -9,6 +9,7 @@ const environments = {
   mongodb: require('./mongodb'),
   mysql: require('./mysql'),
   nvm: require('./nvm'),
+  openjdk: require('./openjdk'),
   typescript: require('./typescript'),
   virtualbox: require('./virtualbox'),
   workbench: require('./workbench'),
