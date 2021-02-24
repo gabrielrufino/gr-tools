@@ -2,23 +2,24 @@
 
 const ora = require('ora')
 
-const execPromise = require('../../helpers/exec-promise')
-const notify = require('../../helpers/notify')
-const verifyBin = require('../../helpers/verify-bin')
+const { execPromise, getUserPassword, notify, verifyBin } = require('../../helpers')
 
 const mongodb = {
   title: 'MongoDB',
   teardown: async ({ logs }) => {
     const installing = ora('Removing mongodb environment')
-    !logs && installing.start()
 
     try {
       verifyBin(['apt'])
 
-      await execPromise('sudo service mongod stop', { silent: !logs })
-      await execPromise('sudo apt-get purge -y mongodb-org*', { silent: !logs })
-      await execPromise('sudo rm -R /var/log/mongodb', { silent: !logs })
-      await execPromise('sudo rm -R /var/lib/mongodb', { silent: !logs })
+      const password = await getUserPassword()
+
+      !logs && installing.start()
+
+      await execPromise(`echo ${password} | sudo -S service mongod stop`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S apt-get purge -y mongodb-org*`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S rm -R /var/log/mongodb`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S rm -R /var/lib/mongodb`, { silent: !logs })
 
       !logs && installing.succeed('mongodb environment removed')
       notify({ message: 'mongodb environment removed' })
