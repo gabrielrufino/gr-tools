@@ -17,8 +17,8 @@ const mysql = {
       !logs && installing.start()
 
       await execPromise(`echo ${password} | sudo -S apt remove -y mysql-server mysql-client mysql-common`, { silent: !logs })
-      await execPromise(`echo ${password} | sudo -S apt autoremove`, { silent: !logs })
-      await execPromise(`echo ${password} | sudo -S apt autoclean`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S apt autoremove -y`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S apt autoclean -y`, { silent: !logs })
       await execPromise(`echo ${password} | sudo -S rm -Rf /var/lib/mysql`, { silent: !logs })
       await execPromise(`echo ${password} | sudo -S rm -Rf /etc/mysql`, { silent: !logs })
 
