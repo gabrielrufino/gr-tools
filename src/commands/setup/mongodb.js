@@ -3,20 +3,21 @@
 const ora = require('ora')
 const si = require('systeminformation')
 
-const execPromise = require('../../helpers/exec-promise')
-const notify = require('../../helpers/notify')
-const verifyBin = require('../../helpers/verify-bin')
+const { execPromise, getUserPassword, notify, verifyBin } = require('../../helpers')
 
 const mongodb = {
   title: 'MongoDB',
   setup: async ({ logs }) => {
     const installing = ora('Installing mongodb environment')
-    !logs && installing.start()
 
     try {
       verifyBin(['wget', 'echo', 'apt'])
 
-      await execPromise('sudo apt install -y gnupg', { silent: !logs })
+      const password = await getUserPassword()
+
+      !logs && installing.start()
+
+      await execPromise(`echo ${password} | sudo apt install -y gnupg`, { silent: !logs })
       await execPromise('wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -', { silent: !logs })
 
       const { distro, release } = await si.osInfo()
@@ -27,8 +28,8 @@ const mongodb = {
         await execPromise('echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list', { silent: !logs })
       }
 
-      await execPromise('sudo apt update', { silent: !logs })
-      await execPromise('sudo apt install -y mongodb-org', { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S apt update`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S apt install -y mongodb-org`, { silent: !logs })
 
       !logs && installing.succeed('mongodb environment installed')
       notify({ message: 'mongodb environment installed' })
