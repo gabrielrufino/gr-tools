@@ -7,12 +7,13 @@ const { execPromise, getUserPassword, notify, verifyBin } = require('../../helpe
 const mysql = {
   title: 'MySQL',
   setup: async ({ logs }) => {
+    const installing = ora('Installing mysql environment')
+
     try {
       verifyBin(['apt'])
 
       const password = await getUserPassword()
 
-      const installing = ora('Installing mysql environment')
       !logs && installing.start()
 
       await execPromise(`echo ${password} | sudo -S apt update`, { silent: !logs })
