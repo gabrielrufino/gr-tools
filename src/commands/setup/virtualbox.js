@@ -2,21 +2,21 @@
 
 const ora = require('ora')
 
-const execPromise = require('../../helpers/exec-promise')
-const notify = require('../../helpers/notify')
-const verifyBin = require('../../helpers/verify-bin')
+const { execPromise, getUserPassword, notify, verifyBin } = require('../../helpers')
 
 const virtualbox = {
   title: 'VirtualBox',
   setup: async ({ logs }) => {
-    verifyBin(['apt'])
-
     const installing = ora('Installing VirtualBox environment')
-    !logs && installing.start()
 
     try {
-      await execPromise('sudo apt update', { silent: !logs })
-      await execPromise('sudo apt -y install virtualbox', { silent: !logs })
+      verifyBin(['apt'])
+
+      const password = await getUserPassword()
+
+      !logs && installing.start()
+      await execPromise(`echo ${password} | sudo -S apt update`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S apt -y install virtualbox`, { silent: !logs })
 
       !logs && installing.succeed('VirtualBox environment installed')
       notify({ message: 'VirtualBox environment installed' })
