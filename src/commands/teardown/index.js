@@ -5,6 +5,7 @@ const inquirer = require('inquirer')
 const notify = require('../../helpers/notify')
 
 const environments = {
+  docker: require('./docker'),
   gh: require('./gh'),
   mongodb: require('./mongodb'),
   mysql: require('./mysql'),
