@@ -57,6 +57,7 @@ const environments = {
       }
     }
   },
+  docker: require('./docker'),
   gh: require('./gh'),
   mongodb: require('./mongodb'),
   mysql: require('./mysql'),
