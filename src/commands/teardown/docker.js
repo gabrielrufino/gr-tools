@@ -12,7 +12,7 @@ const docker = {
     try {
       !logs && installing.start()
 
-      const { password } = await getUserPassword()
+      const password = await getUserPassword()
 
       await execPromise(`echo ${password} | sudo -S apt purge -y docker-ce docker-ce-cli containerd.io`, { silent: !logs })
       await execPromise(`echo ${password} | sudo -S rm -rf /var/lib/docker`, { silent: !logs })
