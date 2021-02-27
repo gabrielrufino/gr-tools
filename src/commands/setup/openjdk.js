@@ -13,7 +13,7 @@ const openjdk = {
       const password = await getUserPassword()
       !logs && installing.start()
 
-      await execPromise(`echo ${password} | sudo -S apt install -y openjdk-8-jre`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S apt install -y openjdk-8-jre openjdk-8-jdk`, { silent: !logs })
 
       !logs && installing.succeed('openjdk environment installed')
     } catch (error) {
