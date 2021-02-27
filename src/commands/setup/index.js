@@ -65,6 +65,7 @@ const environments = {
   openjdk: require('./openjdk'),
   typescript: require('./typescript'),
   virtualbox: require('./virtualbox'),
+  vscode: require('./vscode'),
   workbench: require('./workbench'),
   zsh: require('./zsh')
 }
