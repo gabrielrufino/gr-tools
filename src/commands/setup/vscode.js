@@ -7,7 +7,7 @@ const { execPromise, getUserPassword } = require('../../helpers')
 const vscode = {
   title: 'VSCode - Visual Studio Code',
   setup: async ({ logs }) => {
-    const installing = ora('Installing development environment')
+    const installing = ora('Installing vscode environment')
 
     const password = await getUserPassword()
 
@@ -28,7 +28,7 @@ const vscode = {
 
       !logs && installing.succeed('vscode environment installed')
     } catch (error) {
-      !logs && installing.fail('nvm environment not installed')
+      !logs && installing.fail('vscode environment not installed')
     }
   }
 }
