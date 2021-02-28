@@ -3,8 +3,7 @@
 const inquirer = require('inquirer')
 const ora = require('ora')
 
-const execPromise = require('../../helpers/exec-promise')
-const verifyBin = require('../../helpers/verify-bin')
+const { execPromise, verifyBin } = require('../../helpers')
 
 const gh = {
   title: 'gh - Github CLI',
