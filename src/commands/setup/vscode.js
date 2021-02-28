@@ -19,6 +19,7 @@ const vscode = {
       const extensionIds = [
         'davidanson.vscode-markdownlint',
         'dbaeumer.vscode-eslint',
+        'dracula-theme.theme-dracula',
         'eamodio.gitlens',
         'ms-azuretools.vscode-docker'
       ]
