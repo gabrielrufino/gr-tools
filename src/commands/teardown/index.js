@@ -7,6 +7,7 @@ const notify = require('../../helpers/notify')
 const environments = {
   docker: require('./docker'),
   gh: require('./gh'),
+  kdenlive: require('./kdenlive'),
   mongodb: require('./mongodb'),
   mysql: require('./mysql'),
   nvm: require('./nvm'),
