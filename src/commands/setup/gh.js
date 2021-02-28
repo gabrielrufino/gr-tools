@@ -1,9 +1,8 @@
 'use strict'
 
-const inquirer = require('inquirer')
 const ora = require('ora')
 
-const { execPromise, verifyBin } = require('../../helpers')
+const { execPromise, getUserPassword, verifyBin } = require('../../helpers')
 
 const gh = {
   title: 'gh - Github CLI',
@@ -13,14 +12,7 @@ const gh = {
     try {
       verifyBin(['snap'])
 
-      const { password } = await inquirer.prompt([
-        {
-          type: 'password',
-          name: 'password',
-          message: 'User password: ',
-          validate: p => p ? true : 'Enter the password'
-        }
-      ])
+      const { password } = await getUserPassword()
 
       !logs && installing.start()
 
