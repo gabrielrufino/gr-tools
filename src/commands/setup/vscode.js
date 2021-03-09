@@ -21,7 +21,8 @@ const vscode = {
         'dbaeumer.vscode-eslint',
         'dracula-theme.theme-dracula',
         'eamodio.gitlens',
-        'ms-azuretools.vscode-docker'
+        'ms-azuretools.vscode-docker',
+        'tomoki1207.pdf'
       ]
       for (const extensionId of extensionIds) {
         await execPromise(`code --install-extension ${extensionId}`, { silent: !logs })

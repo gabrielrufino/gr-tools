@@ -17,7 +17,7 @@ const mongodb = {
 
       !logs && installing.start()
 
-      await execPromise(`echo ${password} | sudo apt install -y gnupg`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S apt install -y gnupg`, { silent: !logs })
       await execPromise('wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -', { silent: !logs })
 
       const { distro, release } = await si.osInfo()
