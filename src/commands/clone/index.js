@@ -4,11 +4,9 @@ const axios = require('axios')
 const ora = require('ora')
 const shell = require('shelljs')
 
-const notify = require('../../helpers/notify')
-const verifyBin = require('../../helpers/verify-bin')
-const execPromise = require('../../helpers/exec-promise')
+const { execPromise, notify, verifyBin } = require('../../helpers')
 
-const clone = async (origin, { logs, npmInstall, user }) => {
+const clone = async (origin, { logs, npmInstall, ssh, user }) => {
   try {
     verifyBin(['git', ...(npmInstall ? ['npm'] : [])])
 
@@ -32,12 +30,13 @@ const clone = async (origin, { logs, npmInstall, user }) => {
       !logs && creatingFolder.succeed('Folder \'github\' created')
 
       for (const repository of repositories) {
-        const { clone_url: cloneUrl, name } = repository
+        const { clone_url: cloneUrl, ssh_url: sshUrl, name } = repository
+        const url = ssh ? sshUrl : cloneUrl
 
         const cloningRepository = ora(`Cloning repository ${name}`)
         !logs && cloningRepository.start()
 
-        await execPromise(`git clone ${cloneUrl}`, { silent: !logs })
+        await execPromise(`git clone ${url}`, { silent: !logs })
 
         !logs && cloningRepository.succeed(`Repository ${name} cloned`)
 
