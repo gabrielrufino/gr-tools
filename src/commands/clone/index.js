@@ -36,13 +36,12 @@ const clone = async (origin, { logs, npmInstall, ssh, user }) => {
         !logs && cloningRepository.start()
 
         await execPromise(`git clone ${url}`, { silent: !logs })
+        shell.cd(name)
         await execPromise('git checkout dev', { silent: !logs })
 
         !logs && cloningRepository.succeed(`Repository ${name} cloned`)
 
-        if (npmInstall && shell.ls(`${name}/package.json`).code === 0) {
-          shell.cd(name)
-
+        if (npmInstall && shell.ls('package.json').code === 0) {
           const installingNpmDependencies = ora('Installing npm dependencies')
           !logs && installingNpmDependencies.start()
 
@@ -53,9 +52,9 @@ const clone = async (origin, { logs, npmInstall, ssh, user }) => {
           } catch {
             !logs && installingNpmDependencies.fail('Npm dependencies not installed')
           }
-
-          shell.cd('..')
         }
+
+        shell.cd('..')
       }
 
       shell.cd('..')
