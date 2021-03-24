@@ -41,9 +41,9 @@
     "latest-version": "^5.1.0",
     "local-devices": "^3.1.0",
     "omelette": "^0.4.15-1",
-    "ora": "^5.3.0",
+    "ora": "^5.4.0",
     "shelljs": "^0.8.4",
-    "systeminformation": "^5.6.1"
+    "systeminformation": "^5.6.8"
   },
   "devDependencies": {
     "git-branch-is": "^3.1.0",
