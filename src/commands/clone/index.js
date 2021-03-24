@@ -36,6 +36,7 @@ const clone = async (origin, { logs, npmInstall, ssh, user }) => {
         !logs && cloningRepository.start()
 
         await execPromise(`git clone ${url}`, { silent: !logs })
+        await execPromise('git checkout dev', { silent: !logs })
 
         !logs && cloningRepository.succeed(`Repository ${name} cloned`)
 
