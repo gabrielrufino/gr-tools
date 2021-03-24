@@ -4,9 +4,9 @@ const axios = require('axios')
 const ora = require('ora')
 const shell = require('shelljs')
 
-const notify = require('../helpers/notify')
-const verifyBin = require('../helpers/verify-bin')
-const execPromise = require('../helpers/exec-promise')
+const notify = require('../../helpers/notify')
+const verifyBin = require('../../helpers/verify-bin')
+const execPromise = require('../../helpers/exec-promise')
 
 const clone = async (origin, { logs, npmInstall, user }) => {
   try {
