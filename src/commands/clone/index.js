@@ -16,8 +16,7 @@ const clone = async (origin, { logs, npmInstall, ssh, user }) => {
 
       const { data } = await axios.get(`https://api.github.com/users/${user}/repos`)
 
-      const repositories = data
-        .filter(repo => !repo.archived)
+      const repositories = data.filter(repository => !repository.archived)
 
       !logs && gettingRepositories.succeed('Repositories loaded')
 
@@ -40,20 +39,18 @@ const clone = async (origin, { logs, npmInstall, ssh, user }) => {
 
         !logs && cloningRepository.succeed(`Repository ${name} cloned`)
 
-        if (npmInstall) {
+        if (npmInstall && shell.ls(`${name}/package.json`).code === 0) {
           shell.cd(name)
 
-          if (shell.ls('package.json').code === 0) {
-            const installingNpmDependencies = ora('Installing npm dependencies')
-            !logs && installingNpmDependencies.start()
+          const installingNpmDependencies = ora('Installing npm dependencies')
+          !logs && installingNpmDependencies.start()
 
-            try {
-              await execPromise('npm install', { silent: !logs })
+          try {
+            await execPromise('npm install', { silent: !logs })
 
-              !logs && installingNpmDependencies.succeed('Npm dependencies installed')
-            } catch {
-              !logs && installingNpmDependencies.fail('Npm dependencies not installed')
-            }
+            !logs && installingNpmDependencies.succeed('Npm dependencies installed')
+          } catch {
+            !logs && installingNpmDependencies.fail('Npm dependencies not installed')
           }
 
           shell.cd('..')
