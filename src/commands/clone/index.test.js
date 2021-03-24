@@ -1,4 +1,4 @@
-const clone = require('./clone')
+const clone = require('.')
 
 describe(__filename, () => {
   test('Should be a function', () => {

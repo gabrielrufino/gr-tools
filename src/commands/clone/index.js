@@ -4,11 +4,9 @@ const axios = require('axios')
 const ora = require('ora')
 const shell = require('shelljs')
 
-const notify = require('../helpers/notify')
-const verifyBin = require('../helpers/verify-bin')
-const execPromise = require('../helpers/exec-promise')
+const { execPromise, notify, verifyBin } = require('../../helpers')
 
-const clone = async (origin, { logs, npmInstall, user }) => {
+const clone = async (origin, { logs, npmInstall, ssh, user }) => {
   try {
     verifyBin(['git', ...(npmInstall ? ['npm'] : [])])
 
@@ -18,8 +16,7 @@ const clone = async (origin, { logs, npmInstall, user }) => {
 
       const { data } = await axios.get(`https://api.github.com/users/${user}/repos`)
 
-      const repositories = data
-        .filter(repo => !repo.archived)
+      const repositories = data.filter(repository => !repository.archived)
 
       !logs && gettingRepositories.succeed('Repositories loaded')
 
@@ -32,33 +29,32 @@ const clone = async (origin, { logs, npmInstall, user }) => {
       !logs && creatingFolder.succeed('Folder \'github\' created')
 
       for (const repository of repositories) {
-        const { clone_url: cloneUrl, name } = repository
+        const { clone_url: cloneUrl, ssh_url: sshUrl, name } = repository
+        const url = ssh ? sshUrl : cloneUrl
 
         const cloningRepository = ora(`Cloning repository ${name}`)
         !logs && cloningRepository.start()
 
-        await execPromise(`git clone ${cloneUrl}`, { silent: !logs })
+        await execPromise(`git clone ${url}`, { silent: !logs })
+        shell.cd(name)
+        await execPromise('git checkout dev', { silent: !logs })
 
         !logs && cloningRepository.succeed(`Repository ${name} cloned`)
 
-        if (npmInstall) {
-          shell.cd(name)
+        if (npmInstall && shell.ls('package.json').code === 0) {
+          const installingNpmDependencies = ora('Installing npm dependencies')
+          !logs && installingNpmDependencies.start()
 
-          if (shell.ls('package.json').code === 0) {
-            const installingNpmDependencies = ora('Installing npm dependencies')
-            !logs && installingNpmDependencies.start()
+          try {
+            await execPromise('npm install', { silent: !logs })
 
-            try {
-              await execPromise('npm install', { silent: !logs })
-
-              !logs && installingNpmDependencies.succeed('Npm dependencies installed')
-            } catch {
-              !logs && installingNpmDependencies.fail('Npm dependencies not installed')
-            }
+            !logs && installingNpmDependencies.succeed('Npm dependencies installed')
+          } catch {
+            !logs && installingNpmDependencies.fail('Npm dependencies not installed')
           }
-
-          shell.cd('..')
         }
+
+        shell.cd('..')
       }
 
       shell.cd('..')
