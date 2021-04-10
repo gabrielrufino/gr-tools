@@ -3,10 +3,12 @@
 const inquirer = require('inquirer')
 const ora = require('ora')
 
-const execPromise = require('../helpers/exec-promise')
-const notify = require('../helpers/notify')
-const validatePassword = require('../helpers/validate-password')
-const verifyBin = require('../helpers/verify-bin')
+const {
+  execPromise,
+  notify,
+  validatePassword,
+  verifyBin
+} = require('../helpers')
 
 const updateSystem = async ({ logs }) => {
   verifyBin(['echo', 'sudo', 'apt'])
