@@ -1,3 +1,5 @@
+'use strict'
+
 const scanNetwork = async () => {
   const localDevices = require('local-devices')
 
