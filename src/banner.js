@@ -2,7 +2,7 @@
 
 const figlet = require('figlet')
 
-const isRequired = require('./helpers/is-required')
+const { isRequired } = require('./helpers')
 
 const banner = ({ version = isRequired('version') }) => {
   const output = figlet.textSync('gr-tools')
