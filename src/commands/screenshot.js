@@ -2,7 +2,7 @@
 
 const shell = require('shelljs')
 
-const verifyBin = require('../helpers/verify-bin')
+const { verifyBin } = require('../helpers')
 
 const screenshot = () => {
   verifyBin(['gnome-screenshot'])
