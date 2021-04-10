@@ -3,8 +3,7 @@
 const inquirer = require('inquirer')
 const ora = require('ora')
 
-const execPromise = require('../../helpers/exec-promise')
-const notify = require('../../helpers/notify')
+const { execPromise, notify } = require('../../helpers')
 
 const workbench = {
   title: 'MySQL Workbench',
