@@ -1,3 +1,5 @@
+'use strict'
+
 const omelette = require('omelette')
 
 const commands = require('./commands')

@@ -2,9 +2,7 @@
 
 const ora = require('ora')
 
-const execPromise = require('../../helpers/exec-promise')
-const notify = require('../../helpers/notify')
-const verifyBin = require('../../helpers/verify-bin')
+const { execPromise, notify, verifyBin } = require('../../helpers')
 
 const virtualbox = {
   title: 'VirtualBox',

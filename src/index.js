@@ -5,7 +5,7 @@
 const cli = require('commander')
 
 const banner = require('./banner')
-const checkForUpdate = require('./helpers/check-for-update')
+const { checkForUpdate } = require('./helpers')
 const clean = require('./commands/clean')
 const clone = require('./commands/clone')
 const completion = require('./completion')
