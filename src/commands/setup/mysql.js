@@ -6,6 +6,7 @@ const { execPromise, getUserPassword, notify, verifyBin } = require('../../helpe
 
 const mysql = {
   title: 'MySQL',
+  executable: 'mysql',
   setup: async ({ logs }) => {
     const installing = ora('Installing mysql environment')
 

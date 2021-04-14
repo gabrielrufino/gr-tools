@@ -6,6 +6,7 @@ const { execPromise, getUserPassword } = require('../../helpers')
 
 const openjdk = {
   title: 'OpenJDK',
+  executable: 'java',
   setup: async ({ logs }) => {
     const installing = ora('Installing openjdk environment')
 

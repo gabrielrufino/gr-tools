@@ -6,6 +6,7 @@ const { execPromise, getUserPassword, verifyBin } = require('../../helpers')
 
 const gh = {
   title: 'gh - Github CLI',
+  executable: 'gh',
   setup: async ({ logs }) => {
     const installing = ora('Installing gh environment')
 

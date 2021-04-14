@@ -6,6 +6,7 @@ const { execPromise, getUserPassword, notify, verifyBin } = require('../../helpe
 
 const virtualbox = {
   title: 'VirtualBox',
+  executable: 'virtualbox',
   setup: async ({ logs }) => {
     const installing = ora('Installing VirtualBox environment')
 

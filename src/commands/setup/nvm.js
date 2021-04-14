@@ -6,6 +6,7 @@ const { execPromise, getUserPassword, verifyBin } = require('../../helpers')
 
 const nvm = {
   title: 'NVM - Node Version Manager',
+  executable: 'nvm',
   setup: async ({ logs }) => {
     const installing = ora('Installing nvm environment')
 

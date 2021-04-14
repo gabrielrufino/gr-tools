@@ -7,6 +7,7 @@ const { execPromise, getUserPassword, notify, verifyBin } = require('../../helpe
 
 const mongodb = {
   title: 'MongoDB',
+  executable: 'mongo',
   setup: async ({ logs }) => {
     const installing = ora('Installing mongodb environment')
 
