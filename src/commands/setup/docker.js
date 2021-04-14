@@ -6,6 +6,7 @@ const { execPromise, getUserPassword } = require('../../helpers')
 
 const docker = {
   title: 'Docker',
+  executable: 'docker',
   setup: async ({ logs }) => {
     const installing = ora('Installing docker environment')
 

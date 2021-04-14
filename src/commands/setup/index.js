@@ -2,6 +2,7 @@
 
 const inquirer = require('inquirer')
 const ora = require('ora')
+const shell = require('shelljs')
 
 const {
   execPromise,
@@ -84,7 +85,8 @@ const setup = async (environment, { logs }) => {
         message: 'Select environments to setup',
         choices: Object.entries(environments).map(([key, env]) => ({
           name: env.title,
-          value: key
+          value: key,
+          disabled: shell.which(env.executable)
         }))
       })
 

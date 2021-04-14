@@ -6,6 +6,7 @@ const { execPromise, notify, verifyBin } = require('../../helpers')
 
 const typescript = {
   title: 'TypeScript',
+  executable: 'tsc',
   setup: async ({ logs }) => {
     verifyBin(['npm'])
 

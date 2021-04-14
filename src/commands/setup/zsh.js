@@ -4,6 +4,7 @@ const { execPromise, getUserPassword, notify, verifyBin } = require('../../helpe
 
 const zsh = {
   title: 'ZSH - Oh My Zsh',
+  executable: 'zsh',
   setup: async ({ logs }) => {
     try {
       verifyBin(['apt', 'sh', 'wget', 'git'])

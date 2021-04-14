@@ -6,6 +6,7 @@ const { execPromise, getUserPassword, notify } = require('../../helpers')
 
 const workbench = {
   title: 'MySQL Workbench',
+  executable: 'mysql-workbench-community',
   setup: async ({ logs }) => {
     const installing = ora('Installing Workbench environment')
 
