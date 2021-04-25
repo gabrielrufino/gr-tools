@@ -3,19 +3,12 @@
 const inquirer = require('inquirer')
 const ora = require('ora')
 
-const { execPromise, notify } = require('../../helpers')
+const { execPromise, getUserPassword, notify } = require('../../helpers')
 
 const workbench = {
   title: 'MySQL Workbench',
   teardown: async ({ logs }) => {
-    const { password } = await inquirer.prompt([
-      {
-        type: 'password',
-        name: 'password',
-        message: 'User password: ',
-        validate: p => p ? true : 'Enter the password'
-      }
-    ])
+    const password = await getUserPassword()
 
     const installing = ora('Removing Workbench environment')
     !logs && installing.start()
