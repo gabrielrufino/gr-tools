@@ -1,6 +1,5 @@
 'use strict'
 
-const inquirer = require('inquirer')
 const ora = require('ora')
 
 const { execPromise, getUserPassword, notify } = require('../../helpers')
