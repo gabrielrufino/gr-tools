@@ -15,7 +15,7 @@ const nvm = {
 
       !logs && installing.start()
 
-      const { password } = await getUserPassword()
+      const password = await getUserPassword()
 
       await execPromise('curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash', { silent: !logs })
       await execPromise(`echo ${password} | sudo -S npm uninstall -g gr-tools`)

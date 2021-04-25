@@ -11,7 +11,7 @@ const workbench = {
     const installing = ora('Installing Workbench environment')
 
     try {
-      const { password } = await getUserPassword()
+      const password = await getUserPassword()
 
       !logs && installing.start()
 

@@ -1,10 +1,10 @@
 {
   "name": "gr-tools",
-  "version": "2.25.0",
+  "version": "2.26.2",
   "description": "Commands to make my life easier",
   "main": "src/index.js",
   "scripts": {
-    "deploy": "npm unlink && npm publish && npm i -g gr-tools",
+    "deploy": "node ./src/scripts/deploy.js",
     "dev": "npm uninstall -g gr-tools && npm link",
     "standard": "standard",
     "postinstall": "sh ./src/scripts/postinstall.sh",

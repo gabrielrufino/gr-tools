@@ -13,7 +13,7 @@ const gh = {
     try {
       verifyBin(['snap'])
 
-      const { password } = await getUserPassword()
+      const password = await getUserPassword()
 
       !logs && installing.start()
 

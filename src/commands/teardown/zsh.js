@@ -1,22 +1,13 @@
 'use strict'
 
-const inquirer = require('inquirer')
-
-const { execPromise, notify, verifyBin } = require('../../helpers')
+const { execPromise, getUserPassword, notify, verifyBin } = require('../../helpers')
 
 const zsh = {
   title: 'ZSH - Oh My Zsh',
   teardown: async ({ logs }) => {
     verifyBin(['apt', 'sh', 'wget', 'git'])
 
-    const { password } = await inquirer.prompt([
-      {
-        type: 'password',
-        name: 'password',
-        message: 'User password: ',
-        validate: p => p ? true : 'Enter the password'
-      }
-    ])
+    const password = await getUserPassword()
 
     if (!logs) {
       console.warn('The options --logs is enable on zsh setup')
