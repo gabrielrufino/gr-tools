@@ -2,7 +2,7 @@
 
 const ora = require('ora')
 
-const { execPromise, verifyBin, getUserPassword } = require('../../helpers')
+const { execPromise, getUserPassword, verifyBin } = require('../../helpers')
 
 const gh = {
   title: 'gh - Github CLI',
