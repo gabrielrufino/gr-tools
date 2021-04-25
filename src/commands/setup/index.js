@@ -62,6 +62,7 @@ const environments = {
   },
   docker: require('./docker'),
   gh: require('./gh'),
+  heroku: require('./heroku'),
   kdenlive: require('./kdenlive'),
   mongodb: require('./mongodb'),
   mysql: require('./mysql'),
