@@ -9,7 +9,7 @@ const zsh = {
     try {
       verifyBin(['apt', 'sh', 'wget', 'git'])
 
-      const { password } = await getUserPassword()
+      const password = await getUserPassword()
 
       if (!logs) {
         console.warn('The options --logs is enable on zsh setup')
