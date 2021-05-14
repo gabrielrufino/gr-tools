@@ -11,26 +11,30 @@ const {
 } = require('../helpers')
 
 const updateSystem = async ({ logs }) => {
-  verifyBin(['echo', 'sudo', 'apt'])
+  try {
+    verifyBin(['echo', 'sudo', 'apt'])
 
-  const password = await getUserPassword()
+    const password = await getUserPassword()
 
-  await validatePassword(password)
+    await validatePassword(password)
 
-  const spinner = ora({
-    text: 'Updating system'
-  })
+    const spinner = ora({
+      text: 'Updating system'
+    })
 
-  !logs && spinner.start()
+    !logs && spinner.start()
 
-  await execPromise(`echo ${password} | sudo -S apt update`, { silent: !logs })
-  await execPromise(`echo ${password} | sudo -S apt upgrade -y`, { silent: !logs })
-  await execPromise(`echo ${password} | sudo -S apt autoremove -y`, { silent: !logs })
-  await execPromise(`echo ${password} | sudo -S apt clean`, { silent: !logs })
+    await execPromise(`echo ${password} | sudo -S apt update`, { silent: !logs })
+    await execPromise(`echo ${password} | sudo -S apt upgrade -y`, { silent: !logs })
+    await execPromise(`echo ${password} | sudo -S apt autoremove -y`, { silent: !logs })
+    await execPromise(`echo ${password} | sudo -S apt clean`, { silent: !logs })
 
-  !logs && spinner.succeed('System updated')
+    !logs && spinner.succeed('System updated')
 
-  notify({ message: 'System updated' })
+    notify({ message: 'System updated' })
+  } catch (error) {
+    console.error(error.message)
+  }
 }
 
 const updateMe = async ({ logs }) => {
