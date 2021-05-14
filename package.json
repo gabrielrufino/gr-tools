@@ -1,6 +1,6 @@
 {
   "name": "gr-tools",
-  "version": "2.26.5",
+  "version": "2.26.6",
   "description": "Commands to make my life easier",
   "main": "src/index.js",
   "scripts": {
@@ -37,6 +37,7 @@
     "commander": "^6.2.1",
     "compare-versions": "^3.6.0",
     "figlet": "^1.5.0",
+    "folquire": "0.0.3",
     "inquirer": "^7.3.3",
     "latest-version": "^5.1.0",
     "local-devices": "^3.1.0",
