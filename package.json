@@ -1,6 +1,6 @@
 {
   "name": "gr-tools",
-  "version": "2.26.4",
+  "version": "2.26.5",
   "description": "Commands to make my life easier",
   "main": "src/index.js",
   "scripts": {
@@ -43,7 +43,7 @@
     "omelette": "^0.4.15-1",
     "ora": "^5.4.0",
     "shelljs": "^0.8.4",
-    "systeminformation": "^5.6.20"
+    "systeminformation": "^5.6.21"
   },
   "devDependencies": {
     "git-branch-is": "^3.1.0",
