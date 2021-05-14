@@ -1,26 +1,19 @@
 'use strict'
 
-const inquirer = require('inquirer')
 const ora = require('ora')
 
 const {
   execPromise,
   notify,
   validatePassword,
-  verifyBin
+  verifyBin,
+  getUserPassword
 } = require('../helpers')
 
 const updateSystem = async ({ logs }) => {
   verifyBin(['echo', 'sudo', 'apt'])
 
-  const { password } = await inquirer.prompt([
-    {
-      type: 'password',
-      name: 'password',
-      message: 'User password: ',
-      validate: p => p ? true : 'Enter the password'
-    }
-  ])
+  const password = await getUserPassword()
 
   await validatePassword(password)
 
