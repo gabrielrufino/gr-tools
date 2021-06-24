@@ -42,14 +42,14 @@
     "latest-version": "^5.1.0",
     "local-devices": "^3.1.0",
     "omelette": "^0.4.15-1",
-    "ora": "^5.4.0",
+    "ora": "^5.4.1",
     "shelljs": "^0.8.4",
-    "systeminformation": "^5.7.4"
+    "systeminformation": "^5.7.7"
   },
   "devDependencies": {
     "git-branch-is": "^3.1.0",
     "husky": "^4.3.8",
-    "jest": "^27.0.4",
+    "jest": "^27.0.5",
     "standard": "^14.3.4"
   },
   "standard": {
