@@ -40,6 +40,7 @@ cli
 
 cli
   .command('screenshot')
+  .option('-f, --filename <filename>', 'Filename of the screenshot', undefined)
   .description('Screenshot of a screen area')
   .action(screenshot)
 
