@@ -37,7 +37,7 @@
     "commander": "^6.2.1",
     "compare-versions": "^3.6.0",
     "figlet": "^1.5.0",
-    "folquire": "^0.1.0",
+    "folquire": "^0.1.1",
     "inquirer": "^7.3.3",
     "latest-version": "^5.1.0",
     "local-devices": "^3.1.0",
