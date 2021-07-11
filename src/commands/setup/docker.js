@@ -15,7 +15,7 @@ const docker = {
     try {
       !logs && installing.start()
 
-      await execPromise(`echo ${password} | sudo -S apt remove -y docker docker-engine docker.io containerd runc`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S apt remove -y docker docker-engine docker.io containerd runc`, { silent: !logs }).catch(() => {})
       await execPromise(`echo ${password} | sudo -S apt update`, { silent: !logs })
       await execPromise(`echo ${password} | sudo -S apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common`, { silent: !logs })
       await execPromise('curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -', { silent: !logs })
