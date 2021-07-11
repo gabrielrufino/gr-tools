@@ -19,7 +19,6 @@ describe('Testing the clone command', () => {
     exec(`docker container cp ${__dirname}/../../ gr-tools_container:/home/user`)
     execInContainer('apt update && apt upgrade -y')
     execInContainer('apt install tzdata snapd -y')
-    execInContainer('ls')
     execInContainer('npm link')
   })
 
