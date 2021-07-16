@@ -9,6 +9,7 @@ const {
   verifyBin,
   getUserPassword
 } = require('../../helpers')
+const updateRepositories = require('./repositories')
 
 const updateSystem = async ({ logs }) => {
   try {
@@ -58,6 +59,9 @@ const update = (software, commandObject) => {
     switch (software) {
       case 'system':
         updateSystem(commandObject)
+        break
+      case 'repositories':
+        updateRepositories(commandObject)
         break
       case 'me':
       case 'gr-tools':
