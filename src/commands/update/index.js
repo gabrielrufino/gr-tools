@@ -8,7 +8,7 @@ const {
   validatePassword,
   verifyBin,
   getUserPassword
-} = require('../helpers')
+} = require('../../helpers')
 
 const updateSystem = async ({ logs }) => {
   try {

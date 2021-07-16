@@ -1,4 +1,4 @@
-const update = require('./update')
+const update = require('.')
 
 describe(__filename, () => {
   test('Should be a function', () => {
