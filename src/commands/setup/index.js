@@ -67,6 +67,7 @@ const environments = {
   mongodb: require('./mongodb'),
   mysql: require('./mysql'),
   nvm: require('./nvm'),
+  postman: require('./postman'),
   openjdk: require('./openjdk'),
   typescript: require('./typescript'),
   virtualbox: require('./virtualbox'),
