@@ -14,9 +14,17 @@ const clone = async (origin, { logs, npmInstall, ssh, user }) => {
       const gettingRepositories = ora('Loading repositories')
       !logs && gettingRepositories.start()
 
-      const { data } = await axios.get(`https://api.github.com/users/${user}/repos`)
+      let page = 1
+      let data = []
+      const allRepositories = []
+      do {
+        const response = await axios.get(`https://api.github.com/users/${user}/repos?page=${page}`)
+        data = response.data
+        allRepositories.push(...data)
+        page++
+      } while (data.length)
 
-      const repositories = data.filter(repository => !repository.archived)
+      const repositories = allRepositories.filter(repository => !repository.archived)
 
       !logs && gettingRepositories.succeed('Repositories loaded')
 
