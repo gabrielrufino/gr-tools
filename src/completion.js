@@ -6,16 +6,16 @@ const commands = require('./commands')
 
 const completion = omelette('gr-tools <command> <target>')
 
-completion.on('command', ({ reply }) => {
-  reply(commands.map(({ name }) => name))
-})
+completion
+  .on('command', ({ reply }) => {
+    reply(commands.map(({ name }) => name))
+  })
+  .on('target', ({ before, reply }) => {
+    const command = commands.find(({ name }) => name === before)
 
-completion.on('target', ({ before, reply }) => {
-  const command = commands.find(({ name }) => name === before)
-
-  if (command.targets) {
-    reply(command.targets)
-  }
-})
+    if (command) {
+      reply(command.targets)
+    }
+  })
 
 module.exports = completion
