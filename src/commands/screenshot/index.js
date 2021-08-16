@@ -3,7 +3,7 @@
 const path = require('path')
 const shell = require('shelljs')
 
-const { verifyBin } = require('../helpers')
+const { verifyBin } = require('../../helpers')
 
 const screenshot = ({ filename = `Screenshot-${Date.now()}` }) => {
   verifyBin(['gnome-screenshot'])
