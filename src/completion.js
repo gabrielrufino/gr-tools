@@ -8,22 +8,26 @@ const completion = omelette('gr-tools <command> <target>')
 
 completion
   .onAsync('command', async ({ reply }) => {
-    const blacklist = ['clean.test.js', 'index.js', 'screenshot.test.js']
-    const paths = await readdir(join(__dirname, 'commands'))
-    const commands = paths
-      .filter(path => !blacklist.includes(path))
+    try {
+      const blacklist = ['clean.test.js', 'index.js', 'screenshot.test.js']
+      const paths = await readdir(join(__dirname, 'commands'))
+      const commands = paths
+        .filter(path => !blacklist.includes(path))
 
-    reply(commands)
+      reply(commands)
+    } catch {}
   })
 
 completion
   .onAsync('target', async ({ before, reply }) => {
-    const paths = await readdir(join(__dirname, 'commands', before))
-    const targets = paths
-      .filter(path => !path.endsWith('.test.js') && path !== 'index.js')
-      .map(path => path.replace('.js', ''))
+    try {
+      const paths = await readdir(join(__dirname, 'commands', before))
+      const targets = paths
+        .filter(path => !path.endsWith('.test.js') && path !== 'index.js')
+        .map(path => path.replace('.js', ''))
 
-    reply(targets)
+      reply(targets)
+    } catch {}
   })
 
 module.exports = completion
