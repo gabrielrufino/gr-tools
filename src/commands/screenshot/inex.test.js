@@ -1,4 +1,4 @@
-const screenshot = require('./screenshot')
+const screenshot = require('.')
 
 describe(__filename, () => {
   test('Should be a function', () => {

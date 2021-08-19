@@ -32,43 +32,11 @@ const commands = [
   {
     name: 'setup',
     command: 'setup [environment]',
-    targets: [
-      'development',
-      'docker',
-      'gh',
-      'heroku',
-      'kdenlive',
-      'mongodb',
-      'mysql',
-      'nvm',
-      'openjdk',
-      'typescript',
-      'virtualbox',
-      'vscode',
-      'workbench',
-      'zsh'
-    ],
     action: setup
   },
   {
     name: 'teardown',
     command: 'teardown [environment]',
-    targets: [
-      'development',
-      'docker',
-      'gh',
-      'heroku',
-      'kdenlive',
-      'mongodb',
-      'mysql',
-      'nvm',
-      'openjdk',
-      'typescript',
-      'virtualbox',
-      'vscode',
-      'workbench',
-      'zsh'
-    ],
     action: teardown
   },
   {

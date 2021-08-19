@@ -2,7 +2,7 @@ jest.mock('shelljs', () => ({
   exec: jest.fn()
 }))
 
-const clean = require('./clean')
+const clean = require('.')
 
 const { exec } = require('shelljs')
 
