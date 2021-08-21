@@ -9,7 +9,7 @@
   "scripts": {
     "deploy": "node ./src/scripts/deploy.js",
     "dev": "npm uninstall -g gr-tools && npm link",
-    "standard": "standard",
+    "lint": "standard",
     "postinstall": "node ./src/scripts/postinstall.js",
     "test": "jest --coverage"
   },
@@ -18,7 +18,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run standard && git-branch-is --not master"
+      "pre-commit": "npm run lint && git-branch-is --not master"
     }
   },
   "repository": {
