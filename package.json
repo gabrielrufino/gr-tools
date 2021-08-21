@@ -53,7 +53,7 @@
     "git-branch-is": "^3.1.0",
     "husky": "^4.3.8",
     "jest": "^27.0.6",
-    "standard": "^14.3.4"
+    "standard": "^16.0.3"
   },
   "standard": {
     "env": [
