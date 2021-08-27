@@ -1,6 +1,6 @@
 {
   "name": "gr-tools",
-  "version": "2.29.5",
+  "version": "2.29.6",
   "description": "Commands to make my life easier",
   "main": "src/index.js",
   "engines": {
@@ -9,7 +9,7 @@
   "scripts": {
     "deploy": "node ./src/scripts/deploy.js",
     "dev": "npm uninstall -g gr-tools && npm link",
-    "standard": "standard",
+    "lint": "standard",
     "postinstall": "node ./src/scripts/postinstall.js",
     "test": "jest --coverage"
   },
@@ -18,7 +18,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run standard && git-branch-is --not master"
+      "pre-commit": "npm run lint && git-branch-is --not master"
     }
   },
   "repository": {
@@ -50,10 +50,10 @@
     "systeminformation": "^5.8.6"
   },
   "devDependencies": {
-    "git-branch-is": "^3.1.0",
+    "git-branch-is": "^4.0.0",
     "husky": "^4.3.8",
     "jest": "^27.1.0",
-    "standard": "^14.3.4"
+    "standard": "^16.0.3"
   },
   "standard": {
     "env": [
