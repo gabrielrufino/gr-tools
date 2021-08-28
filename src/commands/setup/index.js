@@ -64,6 +64,7 @@ const environments = {
   gh: require('./gh'),
   heroku: require('./heroku'),
   kdenlive: require('./kdenlive'),
+  minikube: require('./minikube'),
   mongodb: require('./mongodb'),
   mysql: require('./mysql'),
   nvm: require('./nvm'),
