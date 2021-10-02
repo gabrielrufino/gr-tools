@@ -1,6 +1,6 @@
 {
   "name": "gr-tools",
-  "version": "2.30.1",
+  "version": "2.31.0",
   "description": "Commands to make my life easier",
   "main": "src/index.js",
   "engines": {
@@ -43,16 +43,16 @@
     "folquire": "^0.1.1",
     "inquirer": "^7.3.3",
     "latest-version": "^5.1.0",
-    "local-devices": "^3.1.0",
-    "omelette": "^0.4.16",
+    "local-devices": "^3.2.0",
+    "omelette": "^0.4.17",
     "ora": "^5.4.1",
     "shelljs": "^0.8.4",
-    "systeminformation": "^5.9.2"
+    "systeminformation": "^5.9.4"
   },
   "devDependencies": {
     "git-branch-is": "^4.0.0",
     "husky": "^4.3.8",
-    "jest": "^27.2.0",
+    "jest": "^27.2.4",
     "standard": "^16.0.3"
   },
   "standard": {
