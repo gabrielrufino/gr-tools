@@ -1,13 +1,12 @@
 {
   "name": "gr-tools",
-  "version": "2.31.1",
+  "version": "3.0.0",
   "description": "Commands to make my life easier",
   "main": "src/index.js",
   "engines": {
     "node": ">=12"
   },
   "scripts": {
-    "deploy": "node ./src/scripts/deploy.js",
     "dev": "npm uninstall -g gr-tools && npm link",
     "lint": "standard",
     "postinstall": "node ./src/scripts/postinstall.js",
