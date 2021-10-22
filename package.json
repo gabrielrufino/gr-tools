@@ -7,7 +7,6 @@
     "node": ">=12"
   },
   "scripts": {
-    "deploy": "node ./src/scripts/deploy.js",
     "dev": "npm uninstall -g gr-tools && npm link",
     "lint": "standard",
     "postinstall": "node ./src/scripts/postinstall.js",
