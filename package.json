@@ -10,7 +10,8 @@
     "dev": "npm uninstall -g gr-tools && npm link",
     "lint": "standard",
     "postinstall": "node ./src/scripts/postinstall.js",
-    "test": "jest"
+    "test": "jest",
+    "test:cov": "npm run test -- --coverage && xdg-open ./coverage/lcov-report/index.html"
   },
   "bin": {
     "gr-tools": "src/index.js"
