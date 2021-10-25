@@ -10,7 +10,7 @@
     "dev": "npm uninstall -g gr-tools && npm link",
     "lint": "standard",
     "postinstall": "node ./src/scripts/postinstall.js",
-    "test": "jest --coverage"
+    "test": "jest"
   },
   "bin": {
     "gr-tools": "src/index.js"
