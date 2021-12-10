@@ -5,7 +5,6 @@
 const cli = require('commander')
 
 const banner = require('./banner')
-const { checkForUpdate } = require('./helpers')
 const clean = require('./commands/clean')
 const clone = require('./commands/clone')
 const completion = require('./completion')
@@ -14,6 +13,7 @@ const screenshot = require('./commands/screenshot')
 const setup = require('./commands/setup')
 const update = require('./commands/update')
 const teardown = require('./commands/teardown/')
+const { checkForUpdate } = require('./helpers')
 const { name, version } = require('../package.json')
 
 completion.next(() => {
