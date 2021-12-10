@@ -11,7 +11,7 @@ const checkForUpdate = async ({ name = isRequired('name'), version = isRequired(
   const updateAvailable = compareVersions(newVersion, version)
 
   if (updateAvailable === 1) {
-    console.log(`New version available: ${newVersion}`)
+    console.log(`\nNew version available: ${newVersion}`)
   }
 }
 
