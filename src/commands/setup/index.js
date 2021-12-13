@@ -6,6 +6,7 @@ const shell = require('shelljs')
 
 const {
   execPromise,
+  getUserPassword,
   notify,
   validatePassword,
   verifyBin
@@ -17,14 +18,7 @@ const environments = {
     setup: async ({ logs }) => {
       verifyBin(['sudo', 'apt', 'npm'])
 
-      const { password } = await inquirer.prompt([
-        {
-          type: 'password',
-          name: 'password',
-          message: 'User password: ',
-          validate: p => p ? true : 'Enter the password'
-        }
-      ])
+      const password = await getUserPassword()
 
       await validatePassword(password)
 
@@ -101,7 +95,8 @@ const setup = async (environment, { logs }) => {
     } else {
       throw new Error('Environment not found')
     }
-  } catch {
+  } catch (error) {
+    console.error(error)
     const message = 'An unexpected error happened'
 
     console.error(message)
