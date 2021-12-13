@@ -6,6 +6,7 @@ const { notify } = require('../../helpers')
 
 const environments = {
   docker: require('./docker'),
+  firebase: require('./firebase'),
   gh: require('./gh'),
   heroku: require('./heroku'),
   kdenlive: require('./kdenlive'),
