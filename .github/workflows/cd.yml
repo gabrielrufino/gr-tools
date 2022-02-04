@@ -1,4 +1,4 @@
-name: NPM Delivery
+name: Package CD
 
 on:
   push:
