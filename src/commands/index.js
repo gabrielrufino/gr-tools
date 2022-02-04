@@ -1,5 +1,4 @@
 const clone = require('./clone')
-const scan = require('./scan')
 const screenshot = require('./screenshot')
 const setup = require('./setup')
 const teardown = require('./teardown')
@@ -11,12 +10,6 @@ const commands = [
     command: 'clone <origin>',
     targets: ['github'],
     action: clone
-  },
-  {
-    name: 'scan',
-    command: 'scan <environment>',
-    targets: ['network'],
-    action: scan
   },
   {
     name: 'screenshot',

@@ -7,7 +7,6 @@ const cli = require('commander')
 const banner = require('./banner')
 const clone = require('./commands/clone')
 const completion = require('./completion')
-const scan = require('./commands/scan')
 const screenshot = require('./commands/screenshot')
 const setup = require('./commands/setup')
 const update = require('./commands/update')
@@ -42,11 +41,6 @@ completion.next(() => {
     .option('-l, --logs', 'Prints updating logs')
     .description('Update a specified software')
     .action(update)
-
-  cli
-    .command('scan <environment>')
-    .description('Give some analysis of the environment')
-    .action(scan)
 
   cli
     .command('setup [environment]')
