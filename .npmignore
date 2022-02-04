@@ -4,4 +4,3 @@ assets
 coverage
 
 src/**/*.test.js
-src/scripts/deploy.js
