@@ -1,6 +1,4 @@
-const clean = require('./clean')
 const clone = require('./clone')
-const scan = require('./scan')
 const screenshot = require('./screenshot')
 const setup = require('./setup')
 const teardown = require('./teardown')
@@ -8,21 +6,10 @@ const update = require('./update')
 
 const commands = [
   {
-    name: 'clean',
-    command: 'clean',
-    action: clean
-  },
-  {
     name: 'clone',
     command: 'clone <origin>',
     targets: ['github'],
     action: clone
-  },
-  {
-    name: 'scan',
-    command: 'scan <environment>',
-    targets: ['network'],
-    action: scan
   },
   {
     name: 'screenshot',

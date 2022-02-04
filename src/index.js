@@ -5,10 +5,8 @@
 const cli = require('commander')
 
 const banner = require('./banner')
-const clean = require('./commands/clean')
 const clone = require('./commands/clone')
 const completion = require('./completion')
-const scan = require('./commands/scan')
 const screenshot = require('./commands/screenshot')
 const setup = require('./commands/setup')
 const update = require('./commands/update')
@@ -33,11 +31,6 @@ completion.next(() => {
     .action(clone)
 
   cli
-    .command('clean')
-    .description('Empty trash, etc...')
-    .action(clean)
-
-  cli
     .command('screenshot')
     .option('-f, --filename <filename>', 'Filename of the screenshot', undefined)
     .description('Screenshot of a screen area')
@@ -48,11 +41,6 @@ completion.next(() => {
     .option('-l, --logs', 'Prints updating logs')
     .description('Update a specified software')
     .action(update)
-
-  cli
-    .command('scan <environment>')
-    .description('Give some analysis of the environment')
-    .action(scan)
 
   cli
     .command('setup [environment]')
