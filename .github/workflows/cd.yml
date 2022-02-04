@@ -1,8 +1,13 @@
 name: Package CD
 
 on:
-  push:
-    branches: [ master ]
+  workflow_run:
+    workflows: ['Package CI']
+    types:
+      - completed
+    branches:
+      - master
+
 
 jobs:
   publish:
