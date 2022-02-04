@@ -5,7 +5,6 @@
 const cli = require('commander')
 
 const banner = require('./banner')
-const clean = require('./commands/clean')
 const clone = require('./commands/clone')
 const completion = require('./completion')
 const scan = require('./commands/scan')
@@ -31,11 +30,6 @@ completion.next(() => {
     .option('--user <user>', 'Origin user', 'gabrielrufino')
     .description('Clone all my repositories or another user\'s repositories from the specified origin')
     .action(clone)
-
-  cli
-    .command('clean')
-    .description('Empty trash, etc...')
-    .action(clean)
 
   cli
     .command('screenshot')

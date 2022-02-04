@@ -1,4 +1,3 @@
-const clean = require('./clean')
 const clone = require('./clone')
 const scan = require('./scan')
 const screenshot = require('./screenshot')
@@ -7,11 +6,6 @@ const teardown = require('./teardown')
 const update = require('./update')
 
 const commands = [
-  {
-    name: 'clean',
-    command: 'clean',
-    action: clean
-  },
   {
     name: 'clone',
     command: 'clone <origin>',
