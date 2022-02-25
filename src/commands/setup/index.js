@@ -1,59 +1,11 @@
 'use strict'
 
 const inquirer = require('inquirer')
-const ora = require('ora')
 const shell = require('shelljs')
 
-const {
-  execPromise,
-  getUserPassword,
-  notify,
-  validatePassword,
-  verifyBin
-} = require('../../helpers')
+const { notify } = require('../../helpers')
 
 const environments = {
-  development: {
-    title: 'Development',
-    setup: async ({ logs }) => {
-      verifyBin(['sudo', 'apt', 'npm'])
-
-      const password = await getUserPassword()
-
-      await validatePassword(password)
-
-      const installing = ora('Installing development environment')
-
-      !logs && installing.start()
-
-      try {
-        /**
-         * Installing snap
-         */
-        await execPromise(`echo ${password} | sudo -S apt update`, { silent: !logs })
-        await execPromise(`echo ${password} | sudo -S apt install git snapd`, { silent: !logs })
-        /**
-         * Global npm packages
-         */
-        await execPromise('npm i -g firebase-tools http-server gtop yarn lerna', { silent: !logs })
-        /**
-         * Snap softwares
-         */
-        await execPromise(`echo ${password} | sudo -S snap install --classic code`, { silent: !logs })
-        await execPromise(`echo ${password} | sudo -S snap install insomnia`, { silent: !logs })
-        await execPromise(`echo ${password} | sudo -S snap install android-studio --classic`, { silent: !logs })
-
-        await execPromise('git config --global user.name "Gabriel Rufino"', { silent: !logs })
-        await execPromise('git config --global user.email "contato@gabrielrufino.com"', { silent: !logs })
-
-        !logs && installing.succeed('Development environment installed')
-
-        notify({ message: 'Development environment installed' })
-      } catch {
-        !logs && installing.fail('Development environment not installed')
-      }
-    }
-  },
   docker: require('./docker'),
   firebase: require('./firebase'),
   gh: require('./gh'),
