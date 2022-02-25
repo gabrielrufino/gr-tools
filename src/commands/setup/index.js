@@ -37,9 +37,7 @@ const setup = async (environment, { logs }) => {
       })
 
       for (const env of answers.environment) {
-        try {
-          await environments[env].setup({ logs })
-        } catch {}
+        await environments[env].setup({ logs })
       }
     } else {
       throw new Error('Environment not found')
