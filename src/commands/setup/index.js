@@ -13,7 +13,6 @@ const environments = {
   kdenlive: require('./kdenlive'),
   minikube: require('./minikube'),
   nvm: require('./nvm'),
-  openjdk: require('./openjdk'),
   typescript: require('./typescript'),
   virtualbox: require('./virtualbox'),
   vscode: require('./vscode'),
