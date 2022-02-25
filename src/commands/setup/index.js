@@ -12,7 +12,6 @@ const environments = {
   heroku: require('./heroku'),
   kdenlive: require('./kdenlive'),
   minikube: require('./minikube'),
-  mysql: require('./mysql'),
   nvm: require('./nvm'),
   openjdk: require('./openjdk'),
   postman: require('./postman'),
