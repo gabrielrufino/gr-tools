@@ -1,6 +1,6 @@
 {
   "name": "gr-tools",
-  "version": "4.0.2",
+  "version": "5.0.0",
   "description": "Commands to make my life easier",
   "main": "src/index.js",
   "engines": {
