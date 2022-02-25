@@ -13,7 +13,6 @@ const environments = {
   minikube: require('./minikube'),
   nvm: require('./nvm'),
   openjdk: require('./openjdk'),
-  postman: require('./postman'),
   typescript: require('./typescript'),
   virtualbox: require('./virtualbox'),
   vscode: require('./vscode'),
