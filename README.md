@@ -68,12 +68,6 @@ $ gr-tools update gr-tools
 $ gr-tools update me
 ```
 
-### Setup typescript environment
-
-```
-$ gr-tools setup typescript
-```
-
 ### Setup development environment
 
 ```
