@@ -68,12 +68,6 @@ $ gr-tools update gr-tools
 $ gr-tools update me
 ```
 
-### Setup development environment
-
-```
-$ gr-tools setup development
-```
-
 ## CONTRIBUTING
 
 Contributions are very welcome!
