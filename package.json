@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "npm uninstall -g gr-tools && npm link",
     "lint": "standard",
+    "lint:fix": "npm run lint -- --fix",
     "postinstall": "node ./src/scripts/postinstall.js",
     "test": "jest",
     "test:cov": "npm run test -- --coverage && xdg-open ./coverage/lcov-report/index.html"
