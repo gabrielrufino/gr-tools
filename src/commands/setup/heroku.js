@@ -2,7 +2,7 @@
 
 const ora = require('ora')
 
-const { execPromise, getUserPassword, verifyBin } = require('../../helpers')
+const { execPromise, verifyBin } = require('../../helpers')
 
 const heroku = {
   title: 'Heroku CLI',

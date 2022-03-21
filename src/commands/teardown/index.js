@@ -2,7 +2,7 @@
 
 const inquirer = require('inquirer')
 
-const { notify } = require('../../helpers')
+const { notify, getUserPassword } = require('../../helpers')
 
 const environments = {
   docker: require('./docker'),
