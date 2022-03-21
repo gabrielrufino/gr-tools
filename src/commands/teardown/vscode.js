@@ -2,14 +2,12 @@
 
 const ora = require('ora')
 
-const { execPromise, getUserPassword } = require('../../helpers')
+const { execPromise } = require('../../helpers')
 
 const vscode = {
   title: 'VSCode - Visual Studio Code',
-  teardown: async ({ logs }) => {
+  teardown: async ({ logs, password }) => {
     const installing = ora('Removing vscode environment')
-
-    const password = await getUserPassword()
 
     try {
       !logs && installing.start()

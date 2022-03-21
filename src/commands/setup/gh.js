@@ -2,18 +2,16 @@
 
 const ora = require('ora')
 
-const { execPromise, getUserPassword, verifyBin } = require('../../helpers')
+const { execPromise, verifyBin } = require('../../helpers')
 
 const gh = {
   title: 'gh - Github CLI',
   executable: 'gh',
-  setup: async ({ logs }) => {
+  setup: async ({ logs, password }) => {
     const installing = ora('Installing gh environment')
 
     try {
       verifyBin(['snap'])
-
-      const password = await getUserPassword()
 
       !logs && installing.start()
 

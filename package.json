@@ -1,6 +1,6 @@
 {
   "name": "gr-tools",
-  "version": "6.0.0",
+  "version": "6.1.0-0",
   "description": "Commands to make my life easier",
   "main": "src/index.js",
   "engines": {
@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "npm uninstall -g gr-tools && npm link",
     "lint": "standard",
+    "lint:fix": "npm run lint -- --fix",
     "postinstall": "node ./src/scripts/postinstall.js",
     "test": "jest",
     "test:cov": "npm run test -- --coverage && xdg-open ./coverage/lcov-report/index.html"

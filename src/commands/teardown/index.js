@@ -2,7 +2,7 @@
 
 const inquirer = require('inquirer')
 
-const { notify } = require('../../helpers')
+const { notify, getUserPassword } = require('../../helpers')
 
 const environments = {
   docker: require('./docker'),
@@ -19,9 +19,11 @@ const environments = {
 }
 
 const teardown = async (environment, { logs }) => {
+  const password = await getUserPassword()
+
   try {
     if (environments[environment]) {
-      await environments[environment].teardown({ logs })
+      await environments[environment].teardown({ logs, password })
     } else {
       const answers = await inquirer.prompt({
         type: 'checkbox',
@@ -34,7 +36,7 @@ const teardown = async (environment, { logs }) => {
       })
 
       for (const env of answers.environment) {
-        await environments[env].setup({ logs })
+        await environments[env].setup({ logs, password })
       }
     }
   } catch (error) {

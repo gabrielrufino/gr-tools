@@ -2,18 +2,16 @@
 
 const ora = require('ora')
 
-const { execPromise, getUserPassword, verifyBin } = require('../../helpers')
+const { execPromise, verifyBin } = require('../../helpers')
 
 const heroku = {
   title: 'Heroku CLI',
   executable: 'heroku',
-  setup: async ({ logs }) => {
+  setup: async ({ logs, password }) => {
     const installing = ora('Installing heroku environment')
 
     try {
       verifyBin(['snap'])
-
-      const password = await getUserPassword()
 
       !logs && installing.start()
 

@@ -6,7 +6,7 @@ const { execPromise, notify, verifyBin } = require('../../helpers')
 
 const virtualbox = {
   title: 'VirtualBox',
-  teardown: async ({ logs }) => {
+  teardown: async ({ logs, password }) => {
     verifyBin(['apt'])
 
     const installing = ora('Removing VirtualBox environment')

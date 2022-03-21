@@ -5,18 +5,16 @@ const ora = require('ora')
 const os = require('os')
 const path = require('path')
 
-const { execPromise, getUserPassword, verifyBin } = require('../../helpers')
+const { execPromise, verifyBin } = require('../../helpers')
 
 const minikube = {
   title: 'minikube',
   executable: 'minikube',
-  setup: async ({ logs }) => {
+  setup: async ({ logs, password }) => {
     const installing = ora('Installing minikube environment')
 
     try {
       verifyBin(['curl'])
-
-      const password = await getUserPassword()
 
       !logs && installing.start()
 

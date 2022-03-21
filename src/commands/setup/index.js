@@ -3,7 +3,7 @@
 const inquirer = require('inquirer')
 const shell = require('shelljs')
 
-const { notify } = require('../../helpers')
+const { notify, getUserPassword } = require('../../helpers')
 
 const environments = {
   docker: require('./docker'),
@@ -21,8 +21,10 @@ const environments = {
 
 const setup = async (environment, { logs }) => {
   try {
+    const password = await getUserPassword()
+
     if (environments[environment]) {
-      await environments[environment].setup({ logs })
+      await environments[environment].setup({ logs, password })
     } else if (environment === undefined) {
       const answers = await inquirer.prompt({
         type: 'checkbox',
@@ -36,7 +38,7 @@ const setup = async (environment, { logs }) => {
       })
 
       for (const env of answers.environment) {
-        await environments[env].setup({ logs })
+        await environments[env].setup({ logs, password })
       }
     } else {
       throw new Error('Environment not found')
