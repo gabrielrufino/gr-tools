@@ -2,17 +2,15 @@
 
 const ora = require('ora')
 
-const { execPromise, getUserPassword, notify } = require('../../helpers')
+const { execPromise, notify } = require('../../helpers')
 
 const workbench = {
   title: 'MySQL Workbench',
   executable: 'mysql-workbench-community',
-  setup: async ({ logs }) => {
+  setup: async ({ logs, password }) => {
     const installing = ora('Installing Workbench environment')
 
     try {
-      const password = await getUserPassword()
-
       !logs && installing.start()
 
       await execPromise(`echo ${password} | sudo -S snap install mysql-workbench-community --candidate`, { silent: !logs })

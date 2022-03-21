@@ -1,13 +1,11 @@
 'use strict'
 
-const { execPromise, getUserPassword, notify, verifyBin } = require('../../helpers')
+const { execPromise, notify, verifyBin } = require('../../helpers')
 
 const zsh = {
   title: 'ZSH - Oh My Zsh',
-  teardown: async ({ logs }) => {
+  teardown: async ({ logs, password }) => {
     verifyBin(['apt', 'sh', 'wget', 'git'])
-
-    const password = await getUserPassword()
 
     if (!logs) {
       console.warn('The options --logs is enable on zsh setup')

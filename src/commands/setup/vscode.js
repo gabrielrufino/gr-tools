@@ -2,15 +2,13 @@
 
 const ora = require('ora')
 
-const { execPromise, getUserPassword } = require('../../helpers')
+const { execPromise } = require('../../helpers')
 
 const vscode = {
   title: 'VSCode - Visual Studio Code',
   executable: 'code',
-  setup: async ({ logs }) => {
+  setup: async ({ logs, password }) => {
     const installing = ora('Installing vscode environment')
-
-    const password = await getUserPassword()
 
     try {
       !logs && installing.start()

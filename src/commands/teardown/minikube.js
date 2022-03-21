@@ -3,17 +3,15 @@
 const ora = require('ora')
 const os = require('os')
 
-const { execPromise, getUserPassword } = require('../../helpers')
+const { execPromise } = require('../../helpers')
 
 const minikube = {
   title: 'minikube',
   executable: 'minikube',
-  teardown: async ({ logs }) => {
+  teardown: async ({ logs, password }) => {
     const installing = ora('Removing minikube environment')
 
     try {
-      const password = await getUserPassword()
-
       !logs && installing.start()
 
       const arch = os.arch()

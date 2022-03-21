@@ -2,15 +2,13 @@
 
 const ora = require('ora')
 
-const { execPromise, getUserPassword } = require('../../helpers')
+const { execPromise } = require('../../helpers')
 
 const kdenlive = {
   title: 'Kdenlive',
   executable: 'kdenlive',
-  setup: async ({ logs }) => {
+  setup: async ({ logs, password }) => {
     const installing = ora('Installing kdenlive environment')
-
-    const password = await getUserPassword()
 
     try {
       !logs && installing.start()
