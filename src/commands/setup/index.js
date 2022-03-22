@@ -21,9 +21,8 @@ const environments = {
 
 const setup = async (environment, { logs }) => {
   try {
-    const password = await getUserPassword()
-
     if (environments[environment]) {
+      const password = await getUserPassword()
       await environments[environment].setup({ logs, password })
     } else if (environment === undefined) {
       const answers = await inquirer.prompt({
@@ -36,6 +35,7 @@ const setup = async (environment, { logs }) => {
           disabled: shell.which(env.executable)
         }))
       })
+      const password = await getUserPassword()
 
       for (const env of answers.environment) {
         await environments[env].setup({ logs, password })

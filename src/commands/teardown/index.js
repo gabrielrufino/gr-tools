@@ -19,10 +19,9 @@ const environments = {
 }
 
 const teardown = async (environment, { logs }) => {
-  const password = await getUserPassword()
-
   try {
     if (environments[environment]) {
+      const password = await getUserPassword()
       await environments[environment].teardown({ logs, password })
     } else {
       const answers = await inquirer.prompt({
@@ -34,6 +33,7 @@ const teardown = async (environment, { logs }) => {
           value: key
         }))
       })
+      const password = await getUserPassword()
 
       for (const env of answers.environment) {
         await environments[env].setup({ logs, password })
