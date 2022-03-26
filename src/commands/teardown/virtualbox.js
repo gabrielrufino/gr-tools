@@ -13,7 +13,7 @@ const virtualbox = {
     !logs && installing.start()
 
     try {
-      await execPromise('sudo apt -y remove virtualbox', { silent: !logs })
+      await execPromise(`echo ${password} | sudo apt -y remove virtualbox`, { silent: !logs })
 
       !logs && installing.succeed('VirtualBox environment removed')
       notify({ message: 'VirtualBox environment removed' })
