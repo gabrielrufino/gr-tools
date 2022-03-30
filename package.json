@@ -1,6 +1,6 @@
 {
   "name": "gr-tools",
-  "version": "6.1.1",
+  "version": "6.2.0",
   "description": "Commands to make my life easier",
   "main": "src/index.js",
   "engines": {
@@ -47,7 +47,7 @@
     "omelette": "^0.4.17",
     "ora": "^5.4.1",
     "shelljs": "^0.8.5",
-    "systeminformation": "^5.11.2"
+    "systeminformation": "^5.11.9"
   },
   "devDependencies": {
     "faker": "^5.5.3",
