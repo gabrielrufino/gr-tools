@@ -11,6 +11,7 @@
     "lint": "standard",
     "lint:fix": "npm run lint -- --fix",
     "postinstall": "node ./src/scripts/postinstall.js",
+    "reinstall": "rimraf node_modules && npm ci",
     "test": "jest",
     "test:cov": "npm run test -- --coverage && xdg-open ./coverage/lcov-report/index.html"
   },
@@ -54,6 +55,7 @@
     "git-branch-is": "^4.0.0",
     "husky": "^4.3.8",
     "jest": "^27.5.1",
+    "rimraf": "^3.0.2",
     "standard": "^16.0.4"
   },
   "standard": {
