@@ -5,6 +5,7 @@ const inquirer = require('inquirer')
 const { notify, getUserPassword } = require('../../helpers')
 
 const environments = {
+  beekeeper: require('./beekeeper'),
   docker: require('./docker'),
   firebase: require('./firebase'),
   gh: require('./gh'),
