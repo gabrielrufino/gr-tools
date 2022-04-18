@@ -10,19 +10,15 @@ const updateRepositories = async ({ logs }) => {
     const folders = await fs.promises.readdir(process.cwd())
     const basePath = process.cwd()
 
-    const promises = folders.map(async folder => {
-      const isRepository = fs.existsSync(path.join(basePath, folder, '.git'))
-
-      if (isRepository) {
-        console.log(folder)
-        await execPromise('git pull', {
+    const updates = folders
+      .filter(folder => fs.existsSync(path.join(basePath, folder, '.git')))
+      .map(
+        folder => execPromise('git pull', {
           cwd: path.join(basePath, folder)
-        })
-          .catch(console.error)
-      }
-    })
+        }).catch(console.error)
+      )
 
-    await Promise.all(promises)
+    await Promise.all(updates)
   } catch (error) {
     console.error(error)
   }
