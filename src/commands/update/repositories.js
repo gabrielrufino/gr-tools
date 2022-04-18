@@ -2,27 +2,23 @@
 
 const fs = require('fs')
 const path = require('path')
-const shell = require('shelljs')
 
 const { execPromise } = require('../../helpers')
 
 const updateRepositories = async ({ logs }) => {
   try {
     const folders = await fs.promises.readdir(process.cwd())
+    const basePath = process.cwd()
 
-    for (const folder of folders) {
-      const isRepository = fs.existsSync(
-        path.join(process.cwd(), folder, '.git')
+    const updates = folders
+      .filter(folder => fs.existsSync(path.join(basePath, folder, '.git')))
+      .map(
+        folder => execPromise('git pull', {
+          cwd: path.join(basePath, folder)
+        }).catch(console.error)
       )
 
-      if (isRepository) {
-        console.log(folder)
-        shell.cd(folder)
-        await execPromise('git pull')
-          .catch(() => {})
-        shell.cd('..')
-      }
-    }
+    await Promise.all(updates)
   } catch (error) {
     console.error(error)
   }
