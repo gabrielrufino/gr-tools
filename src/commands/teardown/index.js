@@ -10,7 +10,6 @@ const environments = {
   firebase: require('./firebase'),
   gh: require('./gh'),
   heroku: require('./heroku'),
-  kdenlive: require('./kdenlive'),
   minikube: require('./minikube'),
   nvm: require('./nvm'),
   virtualbox: require('./virtualbox'),
