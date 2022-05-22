@@ -34,3 +34,7 @@ jobs:
         node-version: 16
     - run: npm ci
     - run: npm run lint
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
