@@ -13,7 +13,7 @@
     "postinstall": "node ./src/scripts/postinstall.js",
     "reinstall": "rimraf node_modules && npm ci",
     "test": "jest",
-    "test:cov": "npm run test -- --coverage && xdg-open ./coverage/lcov-report/index.html"
+    "test:cov": "npm run test -- --coverage"
   },
   "bin": {
     "gr-tools": "src/index.js"
