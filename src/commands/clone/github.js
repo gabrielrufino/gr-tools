@@ -1,6 +1,7 @@
 'use strict'
 
 const axios = require('axios')
+const fs = require('fs')
 const ora = require('ora')
 const shell = require('shelljs')
 
@@ -20,7 +21,9 @@ const github = async ({ logs, npmInstall, ssh, user }) => {
     page++
   } while (data.length)
 
-  const repositories = allRepositories.filter(repository => !repository.archived)
+  const repositories = allRepositories
+    .filter(repository => !repository.archived)
+    .filter(repository => !fs.existsSync(repository.name))
 
   !logs && gettingRepositories.succeed('Repositories loaded')
 
