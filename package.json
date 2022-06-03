@@ -1,6 +1,6 @@
 {
   "name": "gr-tools",
-  "version": "7.0.2",
+  "version": "7.1.0",
   "description": "Commands to make my life easier",
   "main": "src/index.js",
   "engines": {
@@ -13,7 +13,7 @@
     "postinstall": "node ./src/scripts/postinstall.js",
     "reinstall": "rimraf node_modules && npm ci",
     "test": "jest",
-    "test:cov": "npm run test -- --coverage && xdg-open ./coverage/lcov-report/index.html"
+    "test:cov": "npm run test -- --coverage"
   },
   "bin": {
     "gr-tools": "src/index.js"
@@ -48,7 +48,7 @@
     "omelette": "^0.4.17",
     "ora": "^5.4.1",
     "shelljs": "^0.8.5",
-    "systeminformation": "^5.11.15"
+    "systeminformation": "^5.11.16"
   },
   "devDependencies": {
     "@faker-js/faker": "^6.3.1",
