@@ -17,7 +17,7 @@ const me = async ({ logs }) => {
 
   !logs && spinner.start()
 
-  await execPromise('npm install -g gr-tools@latest', { silent: !logs })
+  await execPromise('npm update -g gr-tools', { silent: !logs })
 
   !logs && spinner.succeed('gr-tools updated')
 
