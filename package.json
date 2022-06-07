@@ -6,6 +6,9 @@
   "engines": {
     "node": ">=12"
   },
+  "os": [
+    "linux"
+  ],
   "scripts": {
     "dev": "npm uninstall -g gr-tools && npm link",
     "lint": "standard",
