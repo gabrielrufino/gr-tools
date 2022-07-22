@@ -14,7 +14,7 @@
     "lint": "standard",
     "lint:fix": "npm run lint -- --fix",
     "postinstall": "node ./src/scripts/postinstall.js",
-    "reinstall": "rimraf node_modules && npm ci",
+    "reinstall": "npx rimraf node_modules && npm ci",
     "test": "jest",
     "test:cov": "npm run test -- --coverage"
   },
