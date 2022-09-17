@@ -47,7 +47,7 @@
     "figlet": "^1.5.2",
     "folquire": "^0.1.1",
     "inquirer": "^7.3.3",
-    "latest-version": "^5.1.0",
+    "latest-version": "^7.0.0",
     "omelette": "^0.4.17",
     "ora": "^5.4.1",
     "shelljs": "^0.8.5",
