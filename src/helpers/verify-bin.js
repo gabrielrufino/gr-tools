@@ -1,10 +1,9 @@
 'use strict'
 
+const { isRequired } = require('@gabrielrufino/is-required')
 const { which } = require('shelljs')
 
-const isRequired = require('./is-required')
-
-const verifyBin = (bins = isRequired('bins')) => {
+const verifyBin = (bins = isRequired({ param: 'bins' })) => {
   if (!bins.every(bin => which(bin))) {
     throw new Error(`Required bins: ${bins.join(', ')}`)
   }
