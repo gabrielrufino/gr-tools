@@ -1,9 +1,9 @@
 'use strict'
 
 const execPromise = require('./exec-promise')
-const isRequired = require('./is-required')
+const { isRequired } = require('@gabrielrufino/is-required')
 
-const validatePassword = async (password = isRequired('password')) => {
+const validatePassword = async (password = isRequired({ param: 'password' })) => {
   try {
     await execPromise(`echo ${password} | sudo -S ls`, { silent: true })
   } catch {
