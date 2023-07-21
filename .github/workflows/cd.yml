@@ -10,9 +10,16 @@ on:
 
 
 jobs:
-  publish:
+  ci:
+    name: CI
     runs-on: ubuntu-latest
-
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - run: exit 0
+  publish:
+    needs:
+      - ci
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
