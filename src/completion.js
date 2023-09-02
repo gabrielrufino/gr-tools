@@ -9,7 +9,7 @@ const completion = omelette('gr-tools <command> <target>')
 completion
   .onAsync('command', async ({ reply }) => {
     try {
-      const blacklist = ['clean.test.js', 'index.js', 'screenshot.test.js']
+      const blacklist = ['clean.test.js', 'index.js']
       const paths = await readdir(join(__dirname, 'commands'))
       const commands = paths
         .filter(path => !blacklist.includes(path))

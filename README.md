@@ -46,12 +46,6 @@ Clone all repositories of `filipedeschamps` from github:
 $ gr-tools clone github --user=filipedeschamps
 ```
 
-### Area screenshot
-
-```
-$ gr-tools screenshot
-```
-
 ### Update system
 
 ```
