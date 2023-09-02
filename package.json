@@ -52,7 +52,7 @@
     "omelette": "^0.4.17",
     "ora": "^5.4.1",
     "shelljs": "^0.8.5",
-    "systeminformation": "^5.20.0"
+    "systeminformation": "^5.21.3"
   },
   "devDependencies": {
     "@faker-js/faker": "^6.3.1",
