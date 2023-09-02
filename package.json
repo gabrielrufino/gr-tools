@@ -1,6 +1,6 @@
 {
   "name": "gr-tools",
-  "version": "8.0.0",
+  "version": "8.0.1",
   "description": "Commands to make my life easier",
   "main": "src/index.js",
   "engines": {
@@ -20,11 +20,6 @@
   },
   "bin": {
     "gr-tools": "src/index.js"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && git-branch-is --not master"
-    }
   },
   "repository": {
     "type": "git",
@@ -52,12 +47,11 @@
     "omelette": "^0.4.17",
     "ora": "^5.4.1",
     "shelljs": "^0.8.5",
-    "systeminformation": "^5.21.3"
+    "systeminformation": "^5.21.4"
   },
   "devDependencies": {
     "@faker-js/faker": "^6.3.1",
     "git-branch-is": "^4.0.0",
-    "husky": "^4.3.8",
     "jest": "^27.5.1",
     "rimraf": "^5.0.1",
     "standard": "^16.0.4"
