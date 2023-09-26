@@ -36,24 +36,24 @@
   },
   "homepage": "https://github.com/gabrielrufino/gr-tools#readme",
   "dependencies": {
-    "@gabrielrufino/is-required": "^1.0.12",
+    "@gabrielrufino/is-required": "^1.0.13",
     "axios": "^0.21.4",
     "commander": "^6.2.1",
     "compare-versions": "^3.6.0",
     "figlet": "^1.6.0",
-    "folquire": "^1.0.25",
+    "folquire": "^1.0.28",
     "inquirer": "^7.3.3",
     "latest-version": "^5.1.0",
     "omelette": "^0.4.17",
     "ora": "^5.4.1",
     "shelljs": "^0.8.5",
-    "systeminformation": "^5.21.4"
+    "systeminformation": "^5.21.9"
   },
   "devDependencies": {
     "@faker-js/faker": "^6.3.1",
     "git-branch-is": "^4.0.0",
     "jest": "^27.5.1",
-    "rimraf": "^5.0.1",
+    "rimraf": "^5.0.4",
     "standard": "^16.0.4"
   },
   "standard": {
