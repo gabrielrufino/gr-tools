@@ -53,7 +53,7 @@
     "@faker-js/faker": "^6.3.1",
     "git-branch-is": "^4.0.0",
     "jest": "^27.5.1",
-    "rimraf": "^5.0.4",
+    "rimraf": "^5.0.5",
     "standard": "^16.0.4"
   },
   "standard": {
