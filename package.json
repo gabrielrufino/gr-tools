@@ -1,6 +1,6 @@
 {
   "name": "gr-tools",
-  "version": "8.0.2",
+  "version": "8.0.4",
   "description": "Commands to make my life easier",
   "main": "src/index.js",
   "engines": {
@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/gabrielrufino/gr-tools#readme",
   "dependencies": {
-    "@gabrielrufino/is-required": "^1.0.13",
+    "@gabrielrufino/is-required": "^1.0.14",
     "axios": "^0.21.4",
     "commander": "^6.2.1",
     "compare-versions": "^3.6.0",
@@ -47,13 +47,13 @@
     "omelette": "^0.4.17",
     "ora": "^5.4.1",
     "shelljs": "^0.8.5",
-    "systeminformation": "^5.21.9"
+    "systeminformation": "^5.21.13"
   },
   "devDependencies": {
     "@faker-js/faker": "^6.3.1",
     "git-branch-is": "^4.0.0",
     "jest": "^27.5.1",
-    "rimraf": "^5.0.4",
+    "rimraf": "^5.0.5",
     "standard": "^16.0.4"
   },
   "standard": {
