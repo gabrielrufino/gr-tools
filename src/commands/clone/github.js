@@ -7,7 +7,7 @@ const shell = require('shelljs')
 
 const { execPromise, notify } = require('../../helpers')
 
-const github = async ({ logs, npmInstall, ssh, user }) => {
+const github = async ({ logs, npmInstall, ssh }) => {
   const gettingRepositories = ora('Loading repositories')
   !logs && gettingRepositories.start()
 
@@ -15,7 +15,7 @@ const github = async ({ logs, npmInstall, ssh, user }) => {
   let data = []
   const allRepositories = []
   do {
-    const response = await axios.get(`https://api.github.com/users/${user}/repos?page=${page}`)
+    const response = await axios.get(`https://api.github.com/users/gabrielrufino/repos?page=${page}`)
     data = response.data
     allRepositories.push(...data)
     page++
