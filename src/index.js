@@ -25,7 +25,6 @@ completion.next(() => {
     .option('-l, --logs', 'Prints cloning logs')
     .option('--npm-install', 'Executes \'npm install\' on repositories with package.json file')
     .option('--ssh', 'Clones the repositories using the SSH url')
-    .option('--user <user>', 'Origin user', 'gabrielrufino')
     .description('Clone all my repositories or another user\'s repositories from the specified origin')
     .action(clone)
 
