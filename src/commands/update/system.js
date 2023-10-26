@@ -24,9 +24,11 @@ const system = async ({ logs }) => {
 
     !logs && spinner.start()
 
-    await execPromise(`echo ${password} | sudo -S apt update`, { silent: !logs })
-    await execPromise(`echo ${password} | sudo -S apt full-upgrade -y`, { silent: !logs })
-    await execPromise(`echo ${password} | sudo -S apt autoremove -y`, { silent: !logs })
+    await execPromise(`
+      echo ${password} | sudo -S apt update
+      echo ${password} | sudo -S apt full-upgrade -y
+      echo ${password} | sudo -S apt autoremove -y
+    `, { silent: !logs })
 
     !logs && spinner.succeed('System updated')
 
