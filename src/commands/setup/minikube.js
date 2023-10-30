@@ -20,9 +20,11 @@ const minikube = {
 
       const arch = os.arch()
       if (arch === 'x64') {
-        await execPromise('curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64', { silent: !logs })
-        await execPromise(`echo ${password} | sudo -S install minikube-linux-amd64 /usr/local/bin/minikube `, { silent: !logs })
-        await execPromise('rm minikube-linux-amd64')
+        await execPromise(`
+          curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+          echo ${password} | sudo -S install minikube-linux-amd64 /usr/local/bin/minikube
+          rm minikube-linux-amd64
+        `)
 
         const alias = 'alias kubectl="minikube kubectl --"'
 
