@@ -12,7 +12,7 @@ const vscode = {
     try {
       !logs && installing.start()
 
-      await execPromise(`echo ${password} | sudo -S snap remove code`, { silent: !logs })
+      await execPromise(`echo ${password} | sudo -S apt remove code`, { silent: !logs })
 
       !logs && installing.succeed('vscode environment removed')
     } catch (error) {
