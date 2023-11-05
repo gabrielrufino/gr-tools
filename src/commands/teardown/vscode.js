@@ -1,22 +1,14 @@
 'use strict'
 
-const ora = require('ora')
-
 const { execPromise } = require('../../helpers')
 
 const vscode = {
   title: 'VSCode - Visual Studio Code',
-  teardown: async ({ logs, password }) => {
-    const installing = ora('Removing vscode environment')
-
+  teardown: async ({ password }) => {
     try {
-      !logs && installing.start()
-
-      await execPromise(`echo ${password} | sudo -S apt remove code`, { silent: !logs })
-
-      !logs && installing.succeed('vscode environment removed')
+      await execPromise(`echo ${password} | sudo -S apt remove code`)
     } catch (error) {
-      !logs && installing.fail('vscode environment not removed')
+      console.error(error)
     }
   }
 }

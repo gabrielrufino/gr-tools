@@ -1,7 +1,6 @@
 'use strict'
 
 const fs = require('fs')
-const ora = require('ora')
 const os = require('os')
 const path = require('path')
 
@@ -10,13 +9,9 @@ const { execPromise, verifyBin } = require('../../helpers')
 const minikube = {
   title: 'minikube',
   executable: 'minikube',
-  setup: async ({ logs, password }) => {
-    const installing = ora('Installing minikube environment')
-
+  setup: async ({ password }) => {
     try {
       verifyBin(['curl'])
-
-      !logs && installing.start()
 
       const arch = os.arch()
       if (arch === 'x64') {
@@ -50,10 +45,7 @@ const minikube = {
       } else {
         throw new Error('Arch is not supported')
       }
-
-      !logs && installing.succeed('minikube environment installed')
     } catch (error) {
-      !logs && installing.fail('minikube environment not installed')
       console.error(error.message)
     }
   }
