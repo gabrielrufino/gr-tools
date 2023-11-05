@@ -18,11 +18,11 @@ const environments = {
   zsh: require('./zsh')
 }
 
-const teardown = async (environment, { logs }) => {
+const teardown = async (environment) => {
   try {
     if (environments[environment]) {
       const password = await getUserPassword()
-      await environments[environment].teardown({ logs, password })
+      await environments[environment].teardown({ password })
     } else {
       const answers = await inquirer.prompt({
         type: 'checkbox',
@@ -36,7 +36,7 @@ const teardown = async (environment, { logs }) => {
       const password = await getUserPassword()
 
       for (const env of answers.environment) {
-        await environments[env].setup({ logs, password })
+        await environments[env].setup({ password })
       }
     }
   } catch (error) {

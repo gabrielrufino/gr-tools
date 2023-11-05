@@ -5,7 +5,7 @@ const path = require('path')
 
 const { execPromise } = require('../../helpers')
 
-const updateRepositories = async ({ logs }) => {
+const updateRepositories = async () => {
   try {
     const folders = await fs.promises.readdir(process.cwd())
     const basePath = process.cwd()

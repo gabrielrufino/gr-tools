@@ -4,12 +4,8 @@ const { execPromise, notify, verifyBin } = require('../../helpers')
 
 const zsh = {
   title: 'ZSH - Oh My Zsh',
-  teardown: async ({ logs, password }) => {
+  teardown: async ({ password }) => {
     verifyBin(['apt', 'sh', 'wget', 'git'])
-
-    if (!logs) {
-      console.warn('The options --logs is enable on zsh setup')
-    }
 
     try {
       await execPromise('uninstall_oh_my_zsh')

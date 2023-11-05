@@ -19,11 +19,11 @@ const environments = {
   zsh: require('./zsh')
 }
 
-const setup = async (environment, { logs }) => {
+const setup = async (environment) => {
   try {
     if (environments[environment]) {
       const password = await getUserPassword()
-      await environments[environment].setup({ logs, password })
+      await environments[environment].setup({ password })
     } else if (environment === undefined) {
       const answers = await inquirer.prompt({
         type: 'checkbox',
@@ -38,7 +38,7 @@ const setup = async (environment, { logs }) => {
       const password = await getUserPassword()
 
       for (const env of answers.environment) {
-        await environments[env].setup({ logs, password })
+        await environments[env].setup({ password })
       }
     } else {
       throw new Error('Environment not found')

@@ -1,18 +1,12 @@
 'use strict'
 
-const ora = require('ora')
-
 const { execPromise } = require('../../helpers')
 
 const vscode = {
   title: 'VSCode - Visual Studio Code',
   executable: 'code',
-  setup: async ({ logs, password }) => {
-    const installing = ora('Installing vscode environment')
-
+  setup: async ({ password }) => {
     try {
-      !logs && installing.start()
-
       await execPromise(`
         echo ${password} | sudo -S apt-get install wget gpg -y
         wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
@@ -33,12 +27,10 @@ const vscode = {
         'tomoki1207.pdf'
       ]
       for (const extensionId of extensionIds) {
-        await execPromise(`code --install-extension ${extensionId}`, { silent: !logs })
+        await execPromise(`code --install-extension ${extensionId}`)
       }
-
-      !logs && installing.succeed('vscode environment installed')
     } catch (error) {
-      !logs && installing.fail('vscode environment not installed')
+      console.error(error)
     }
   }
 }
