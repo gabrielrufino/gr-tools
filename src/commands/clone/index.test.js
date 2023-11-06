@@ -16,10 +16,9 @@ describe(__filename, () => {
 
   test('Should call the github function with correct arguments', async () => {
     const npmInstall = faker.datatype.boolean()
-    const ssh = faker.datatype.boolean()
 
-    await clone('github', { npmInstall, ssh })
+    await clone('github', { npmInstall })
 
-    expect(github).toBeCalledWith({ npmInstall, ssh })
+    expect(github).toBeCalledWith({ npmInstall })
   })
 })

@@ -4,12 +4,12 @@ const github = require('./github')
 
 const { notify, verifyBin } = require('../../helpers')
 
-const clone = async (origin, { npmInstall, ssh }) => {
+const clone = async (origin, { npmInstall }) => {
   try {
     verifyBin(['git', ...(npmInstall ? ['npm'] : [])])
 
     if (origin === 'github') {
-      await github({ npmInstall, ssh })
+      await github({ npmInstall })
     } else {
       console.error('Invalid origin')
     }

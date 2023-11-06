@@ -6,7 +6,7 @@ const shell = require('shelljs')
 
 const { execPromise, notify } = require('../../helpers')
 
-const github = async ({ npmInstall, ssh }) => {
+const github = async ({ npmInstall }) => {
   let page = 1
   let data = []
   const allRepositories = []
@@ -25,8 +25,7 @@ const github = async ({ npmInstall, ssh }) => {
   shell.cd('github')
 
   for (const repository of repositories) {
-    const { clone_url: cloneUrl, ssh_url: sshUrl, name } = repository
-    const url = ssh ? sshUrl : cloneUrl
+    const { ssh_url: url, name } = repository
 
     await execPromise(`git clone ${url}`)
     shell.cd(name)
