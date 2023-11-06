@@ -13,11 +13,9 @@ const clone = async (origin, { npmInstall, ssh }) => {
     } else {
       console.error('Invalid origin')
     }
-  } catch {
-    const message = 'An unexpected error happened'
-
-    console.error(message)
-    notify({ message, level: 'critical' })
+  } catch (error) {
+    console.error(error.message)
+    notify({ message: 'An error occurred while cloning', level: 'critical' })
   }
 }
 
