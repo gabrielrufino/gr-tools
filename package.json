@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "dev": "npm uninstall -g gr-tools && npm link",
-    "lint": "standard",
+    "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
     "postinstall": "node ./src/scripts/postinstall.js",
     "reinstall": "npx rimraf node_modules && npm ci",
@@ -50,14 +50,10 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^6.3.1",
+    "@gabrielrufino/eslint-config": "^1.6.0",
+    "eslint": "^8.53.0",
     "git-branch-is": "^4.0.0",
     "jest": "^27.5.1",
-    "rimraf": "^5.0.5",
-    "standard": "^16.0.4"
-  },
-  "standard": {
-    "env": [
-      "jest"
-    ]
+    "rimraf": "^5.0.5"
   }
 }

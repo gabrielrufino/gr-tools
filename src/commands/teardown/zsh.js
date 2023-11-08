@@ -1,22 +1,20 @@
-'use strict'
-
-const { execPromise, notify, verifyBin } = require('../../helpers')
+const { execPromise, notify, verifyBin } = require('../../helpers');
 
 const zsh = {
   title: 'ZSH - Oh My Zsh',
   teardown: async ({ password }) => {
-    verifyBin(['apt', 'sh', 'wget', 'git'])
+    verifyBin(['apt', 'sh', 'wget', 'git']);
 
     try {
-      await execPromise('uninstall_oh_my_zsh')
-      await execPromise(`echo ${password} | sudo -S apt -y remove zsh`)
-      await execPromise(`echo ${password} | chsh -s $(which bash)`)
+      await execPromise('uninstall_oh_my_zsh');
+      await execPromise(`echo ${password} | sudo -S apt -y remove zsh`);
+      await execPromise(`echo ${password} | chsh -s $(which bash)`);
 
-      notify({ message: 'zsh environment installed' })
+      notify({ message: 'zsh environment installed' });
     } catch {
-      notify({ message: 'zsh environment not installed' })
+      notify({ message: 'zsh environment not installed' });
     }
-  }
-}
+  },
+};
 
-module.exports = zsh
+module.exports = zsh;

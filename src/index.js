@@ -1,49 +1,48 @@
 #!/usr/bin/env node
 
-'use strict'
+const cli = require('commander');
 
-const cli = require('commander')
+const { name, version } = require('../package.json');
 
-const banner = require('./banner')
-const clone = require('./commands/clone')
-const completion = require('./completion')
-const setup = require('./commands/setup')
-const update = require('./commands/update')
-const teardown = require('./commands/teardown/')
-const { checkForUpdate } = require('./helpers')
-const { name, version } = require('../package.json')
+const banner = require('./banner');
+const clone = require('./commands/clone');
+const setup = require('./commands/setup');
+const teardown = require('./commands/teardown');
+const update = require('./commands/update');
+const completion = require('./completion');
+const { checkForUpdate } = require('./helpers');
 
 completion.next(() => {
-  banner({ version })
+  banner({ version });
 
   cli
     .name(name)
-    .version(version)
+    .version(version);
 
   cli
     .command('clone <origin>')
     .option('--npm-install', 'Executes \'npm install\' on repositories with package.json file')
     .description('Clone all my repositories or another user\'s repositories from the specified origin')
-    .action(clone)
+    .action(clone);
 
   cli
     .command('update <software>')
     .description('Update a specified software')
-    .action(update)
+    .action(update);
 
   cli
     .command('setup [environment]')
     .description('Makes the setup of an specific environment')
-    .action(setup)
+    .action(setup);
 
   cli
     .command('teardown [environment]')
     .description('Makes the teardown of an specific environment')
-    .action(teardown)
+    .action(teardown);
 
-  cli.parse(process.argv)
+  cli.parse(process.argv);
 
-  checkForUpdate({ name, version })
-})
+  checkForUpdate({ name, version });
+});
 
-completion.init()
+completion.init();

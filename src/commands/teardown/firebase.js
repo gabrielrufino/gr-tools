@@ -1,19 +1,17 @@
-'use strict'
-
-const { execPromise, verifyBin } = require('../../helpers')
+const { execPromise, verifyBin } = require('../../helpers');
 
 const firebase = {
   title: 'firebase - Firebase Tools',
   executable: 'firebase',
   teardown: async () => {
     try {
-      verifyBin(['npm'])
+      verifyBin(['npm']);
 
-      await execPromise('npm uninstall -g firebase-tools')
+      await execPromise('npm uninstall -g firebase-tools');
     } catch (error) {
-      console.error(error.message)
+      console.error(error.message);
     }
-  }
-}
+  },
+};
 
-module.exports = firebase
+module.exports = firebase;

@@ -1,18 +1,16 @@
-'use strict'
-
-const { execPromise, notify } = require('../../helpers')
+const { execPromise, notify } = require('../../helpers');
 
 const workbench = {
   title: 'MySQL Workbench',
   teardown: async ({ password }) => {
     try {
-      await execPromise(`echo ${password} | sudo -S snap remove mysql-workbench-community`)
+      await execPromise(`echo ${password} | sudo -S snap remove mysql-workbench-community`);
 
-      notify({ message: 'Workbench environment removed' })
+      notify({ message: 'Workbench environment removed' });
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
-}
+  },
+};
 
-module.exports = workbench
+module.exports = workbench;

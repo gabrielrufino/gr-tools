@@ -1,8 +1,7 @@
-'use strict'
+const { promisify } = require('util');
 
-const { exec } = require('shelljs')
-const { promisify } = require('util')
+const { exec } = require('shelljs');
 
-const execPromise = promisify(exec)
+const execPromise = promisify(exec);
 
-module.exports = execPromise
+module.exports = execPromise;

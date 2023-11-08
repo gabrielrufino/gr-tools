@@ -1,6 +1,4 @@
-'use strict'
-
-const { execPromise } = require('../../helpers')
+const { execPromise } = require('../../helpers');
 
 const vscode = {
   title: 'VSCode - Visual Studio Code',
@@ -16,7 +14,7 @@ const vscode = {
         sudo apt install apt-transport-https -y
         sudo apt update
         sudo apt install code -y
-      `)
+      `);
 
       const extensionIds = [
         'davidanson.vscode-markdownlint',
@@ -24,15 +22,14 @@ const vscode = {
         'dracula-theme.theme-dracula',
         'eamodio.gitlens',
         'ms-azuretools.vscode-docker',
-        'tomoki1207.pdf'
-      ]
-      for (const extensionId of extensionIds) {
-        await execPromise(`code --install-extension ${extensionId}`)
-      }
-    } catch (error) {
-      console.error(error)
-    }
-  }
-}
+        'tomoki1207.pdf',
+      ];
 
-module.exports = vscode
+      await Promise.all(extensionIds.map((extensionId) => execPromise(`code --install-extension ${extensionId}`)));
+    } catch (error) {
+      console.error(error);
+    }
+  },
+};
+
+module.exports = vscode;

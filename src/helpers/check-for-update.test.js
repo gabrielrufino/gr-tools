@@ -1,7 +1,7 @@
-const checkForUpdate = require('./check-for-update')
+const checkForUpdate = require('./check-for-update');
 
 describe(__filename, () => {
   test('Should be a function', () => {
-    expect(checkForUpdate).toBeInstanceOf(Function)
-  })
-})
+    expect(checkForUpdate).toBeInstanceOf(Function);
+  });
+});

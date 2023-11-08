@@ -1,5 +1,3 @@
-'use strict'
+const folquire = require('folquire');
 
-const folquire = require('folquire')
-
-module.exports = folquire(__dirname)
+module.exports = folquire(__dirname);
