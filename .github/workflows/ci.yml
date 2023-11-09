@@ -8,7 +8,7 @@ jobs:
     name: Tests
     strategy:
       matrix:
-        node-version: [12, 14, 16, 18, 20]
+        node-version: [16, 18, 20]
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
