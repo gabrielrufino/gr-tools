@@ -12,66 +12,22 @@ Commands to make my life easier
 
 * Node.js
 * NPM
+* Debian based OS
 
-## Used in
+## Getting started
 
-* Ubuntu
-* Linux Mint
-
-## Installing
-
+```sh
+npm install -g gr-tools
+gr-tools --version
+gr-tools --help
 ```
-$ npm install -g gr-tools
-```
-
-## Commands
-
-### Clone my github repositories
-
-Clone all my repositories from github:
-
-```
-$ gr-tools clone github
-```
-
-Clone all my repositories from github executing `npm install` on repositories with `package.json` file:
-
-```
-$ gr-tools clone github --npm-install
-```
-
-Clone all repositories of `filipedeschamps` from github:
-
-```
-$ gr-tools clone github --user=filipedeschamps
-```
-
-### Update system
-
-```
-$ gr-tools update system
-```
-
-### Update GR Tools
-
-```
-$ gr-tools update gr-tools
-
-# or
-
-$ gr-tools update me
-```
-
-## CONTRIBUTING
-
-Contributions are very welcome!
 
 ### Scripts
 
 #### Development
 
-```bash
-$ npm run dev
+```sh
+npm run dev
 ```
 
 Removes possible `gr-tools` globally installed and executes `npm link` for testing while developing.

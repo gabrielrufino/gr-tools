@@ -1,16 +1,14 @@
-'use strict'
-
-const { execPromise } = require('../../helpers')
+const { execPromise } = require('../../helpers');
 
 const vscode = {
   title: 'VSCode - Visual Studio Code',
   teardown: async ({ password }) => {
     try {
-      await execPromise(`echo ${password} | sudo -S apt remove code`)
+      await execPromise(`echo ${password} | sudo -S apt remove code`);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
-}
+  },
+};
 
-module.exports = vscode
+module.exports = vscode;

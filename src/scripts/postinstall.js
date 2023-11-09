@@ -1,15 +1,14 @@
-'use strict'
+const { readFileSync, existsSync } = require('fs');
+const { join } = require('path');
 
-const { join } = require('path')
-const { exec } = require('shelljs')
-const { readFileSync, existsSync } = require('fs')
+const { exec } = require('shelljs');
 
-const zshrcPath = join(process.env.HOME, '.zshrc')
+const zshrcPath = join(process.env.HOME, '.zshrc');
 if (existsSync(zshrcPath)) {
-  exec('gr-tools --completion >> ~/.config/gr-tools.completion.sh')
-  const zshrc = readFileSync(zshrcPath, { encoding: 'utf8' })
+  exec('gr-tools --completion >> ~/.config/gr-tools.completion.sh');
+  const zshrc = readFileSync(zshrcPath, { encoding: 'utf8' });
 
   if (!zshrc.includes('source ~/.config/gr-tools.completion.sh')) {
-    exec('echo "source ~/.config/gr-tools.completion.sh" >> ~/.zshrc')
+    exec('echo "source ~/.config/gr-tools.completion.sh" >> ~/.zshrc');
   }
 }

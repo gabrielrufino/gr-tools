@@ -1,17 +1,15 @@
-'use strict'
-
 const {
   execPromise,
   notify,
-  verifyBin
-} = require('../../helpers')
+  verifyBin,
+} = require('../../helpers');
 
 const me = async () => {
-  verifyBin(['npm'])
+  verifyBin(['npm']);
 
-  await execPromise('npm update -g gr-tools')
+  await execPromise('npm update -g gr-tools');
 
-  notify({ message: 'gr-tools updated' })
-}
+  notify({ message: 'gr-tools updated' });
+};
 
-module.exports = me
+module.exports = me;

@@ -1,23 +1,21 @@
-'use strict'
-
-const { execPromise, notify, verifyBin } = require('../../helpers')
+const { execPromise, notify, verifyBin } = require('../../helpers');
 
 const zsh = {
   title: 'ZSH - Oh My Zsh',
   executable: 'zsh',
   setup: async ({ password }) => {
     try {
-      verifyBin(['apt', 'sh', 'wget', 'git'])
+      verifyBin(['apt', 'sh', 'wget', 'git']);
 
-      await execPromise(`echo ${password} | sudo -S apt -y install zsh`)
-      await execPromise('sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"')
-      await execPromise(`echo ${password} | chsh -s $(which zsh)`)
+      await execPromise(`echo ${password} | sudo -S apt -y install zsh`);
+      await execPromise('sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"');
+      await execPromise(`echo ${password} | chsh -s $(which zsh)`);
 
-      notify({ message: 'zsh environment installed' })
+      notify({ message: 'zsh environment installed' });
     } catch {
-      notify({ message: 'zsh environment not installed' })
+      notify({ message: 'zsh environment not installed' });
     }
-  }
-}
+  },
+};
 
-module.exports = zsh
+module.exports = zsh;

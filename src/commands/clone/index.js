@@ -1,22 +1,20 @@
-'use strict'
+const { notify, verifyBin } = require('../../helpers');
 
-const github = require('./github')
-
-const { notify, verifyBin } = require('../../helpers')
+const github = require('./github');
 
 const clone = async (origin, { npmInstall }) => {
   try {
-    verifyBin(['git', ...(npmInstall ? ['npm'] : [])])
+    verifyBin(['git', ...(npmInstall ? ['npm'] : [])]);
 
     if (origin === 'github') {
-      await github({ npmInstall })
+      await github({ npmInstall });
     } else {
-      console.error('Invalid origin')
+      console.error('Invalid origin');
     }
   } catch (error) {
-    console.error(error.message)
-    notify({ message: 'An error occurred while cloning', level: 'critical' })
+    console.error(error.message);
+    notify({ message: 'An error occurred while cloning', level: 'critical' });
   }
-}
+};
 
-module.exports = clone
+module.exports = clone;

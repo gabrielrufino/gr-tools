@@ -1,24 +1,25 @@
-const { faker } = require('@faker-js/faker')
+const { faker } = require('@faker-js/faker');
 
-const github = require('./github')
-const clone = require('.')
+const github = require('./github');
 
-jest.mock('./github')
+const clone = require('.');
+
+jest.mock('./github');
 
 describe(__filename, () => {
   beforeEach(() => {
-    jest.resetAllMocks()
-  })
+    jest.resetAllMocks();
+  });
 
   test('Should be a function', () => {
-    expect(clone).toBeInstanceOf(Function)
-  })
+    expect(clone).toBeInstanceOf(Function);
+  });
 
   test('Should call the github function with correct arguments', async () => {
-    const npmInstall = faker.datatype.boolean()
+    const npmInstall = faker.datatype.boolean();
 
-    await clone('github', { npmInstall })
+    await clone('github', { npmInstall });
 
-    expect(github).toBeCalledWith({ npmInstall })
-  })
-})
+    expect(github).toBeCalledWith({ npmInstall });
+  });
+});

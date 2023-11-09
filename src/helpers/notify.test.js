@@ -1,46 +1,46 @@
 jest.mock('shelljs', () => ({
-  exec: jest.fn()
-}))
+  exec: jest.fn(),
+}));
 
-const notify = require('./notify')
+const { exec } = require('shelljs');
 
-const { exec } = require('shelljs')
+const notify = require('./notify');
 
 describe(__filename, () => {
-  const message = 'Some text here'
-  const level = 'normal'
+  const message = 'Some text here';
+  const level = 'normal';
 
   afterEach(() => {
-    jest.clearAllMocks()
-  })
+    jest.clearAllMocks();
+  });
 
   test('Should be a function', () => {
-    expect(notify).toBeInstanceOf(Function)
-  })
+    expect(notify).toBeInstanceOf(Function);
+  });
 
   test('Should call the shell.exec with the correct argument', () => {
-    notify({ message, level })
+    notify({ message, level });
 
     expect(exec)
-      .toBeCalledWith(`notify-send --urgency=${level} gr-tools "${message}"`)
-  })
+      .toBeCalledWith(`notify-send --urgency=${level} gr-tools "${message}"`);
+  });
 
   test('Should assume \'normal\' as the default value for level', () => {
-    notify({ message })
+    notify({ message });
 
     expect(exec)
-      .toBeCalledWith(`notify-send --urgency=normal gr-tools "${message}"`)
-  })
+      .toBeCalledWith(`notify-send --urgency=normal gr-tools "${message}"`);
+  });
 
   test('Should throw an error when doesn\'t receive the message', () => {
     expect(
-      () => notify({})
-    ).toThrow()
-  })
+      () => notify({}),
+    ).toThrow();
+  });
 
   test('Should throw an error when receiving an invalid level', () => {
     expect(
-      () => notify({ message, level: 'invalid' })
-    ).toThrow(Error)
-  })
-})
+      () => notify({ message, level: 'invalid' }),
+    ).toThrow(Error);
+  });
+});

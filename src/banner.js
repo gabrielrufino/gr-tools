@@ -1,14 +1,12 @@
-'use strict'
+const figlet = require('figlet');
 
-const figlet = require('figlet')
-
-const { isRequired } = require('./helpers')
+const { isRequired } = require('./helpers');
 
 const banner = ({ version = isRequired('version') }) => {
-  const output = figlet.textSync('gr-tools')
+  const output = figlet.textSync('gr-tools');
 
-  console.log(output)
-  console.log(`\nVersion: ${version}\n`)
-}
+  console.log(output);
+  console.log(`\nVersion: ${version}\n`);
+};
 
-module.exports = banner
+module.exports = banner;

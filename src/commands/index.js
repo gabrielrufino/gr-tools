@@ -1,31 +1,31 @@
-const clone = require('./clone')
-const setup = require('./setup')
-const teardown = require('./teardown')
-const update = require('./update')
+const clone = require('./clone');
+const setup = require('./setup');
+const teardown = require('./teardown');
+const update = require('./update');
 
 const commands = [
   {
     name: 'clone',
     command: 'clone <origin>',
     targets: ['github'],
-    action: clone
+    action: clone,
   },
   {
     name: 'setup',
     command: 'setup [environment]',
-    action: setup
+    action: setup,
   },
   {
     name: 'teardown',
     command: 'teardown [environment]',
-    action: teardown
+    action: teardown,
   },
   {
     name: 'update',
     command: 'update <software>',
     targets: ['me', 'gr-tools', 'system', 'repositories'],
-    action: update
-  }
-]
+    action: update,
+  },
+];
 
-module.exports = commands
+module.exports = commands;

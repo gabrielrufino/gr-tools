@@ -1,18 +1,16 @@
-'use strict'
-
-const { execPromise, verifyBin } = require('../../helpers')
+const { execPromise, verifyBin } = require('../../helpers');
 
 const nvm = {
   title: 'NVM - Node Version Manager',
   teardown: async () => {
     try {
-      verifyBin(['curl', 'bash'])
+      verifyBin(['curl', 'bash']);
 
-      await execPromise('rm -rf "$NVM_DIR"')
+      await execPromise('rm -rf "$NVM_DIR"');
     } catch (error) {
-      console.error(error.message)
+      console.error(error.message);
     }
-  }
-}
+  },
+};
 
-module.exports = nvm
+module.exports = nvm;

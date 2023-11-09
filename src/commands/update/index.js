@@ -1,33 +1,32 @@
-'use strict'
+const { notify } = require('../../helpers');
 
-const { notify } = require('../../helpers')
-const updateRepositories = require('./repositories')
-const updateSystem = require('./system')
-const updateMe = require('./me')
+const updateMe = require('./me');
+const updateRepositories = require('./repositories');
+const updateSystem = require('./system');
 
 const update = (software, commandObject) => {
   try {
     switch (software) {
       case 'system':
-        updateSystem(commandObject)
-        break
+        updateSystem(commandObject);
+        break;
       case 'repositories':
-        updateRepositories(commandObject)
-        break
+        updateRepositories(commandObject);
+        break;
       case 'me':
       case 'gr-tools':
-        updateMe(commandObject)
-        break
+        updateMe(commandObject);
+        break;
       default:
-        console.log('Invalid software')
-        break
+        console.log('Invalid software');
+        break;
     }
   } catch {
-    const message = 'An unexpected error happened'
+    const message = 'An unexpected error happened';
 
-    console.error(message)
-    notify({ message, level: 'critical' })
+    console.error(message);
+    notify({ message, level: 'critical' });
   }
-}
+};
 
-module.exports = update
+module.exports = update;
