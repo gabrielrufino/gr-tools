@@ -4,10 +4,11 @@ const docker = {
   title: 'Docker',
   teardown: async ({ password }) => {
     try {
-      await execPromise(`echo ${password} | sudo -S apt purge -y docker-ce docker-ce-cli containerd.io`);
-      await execPromise(`echo ${password} | sudo -S rm -rf /var/lib/docker`);
-
-      await execPromise(`echo ${password} | sudo -S rm /usr/local/bin/docker-compose`);
+      await execPromise(`
+        echo ${password} | sudo -S apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
+        sudo rm -rf /var/lib/docker
+        sudo rm -rf /var/lib/containerd
+      `);
     } catch (error) {
       console.error(error.message);
     }
