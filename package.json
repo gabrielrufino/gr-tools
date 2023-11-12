@@ -46,7 +46,7 @@
     "latest-version": "^5.1.0",
     "omelette": "^0.4.17",
     "shelljs": "^0.8.5",
-    "systeminformation": "^5.21.15"
+    "systeminformation": "^5.21.17"
   },
   "devDependencies": {
     "@faker-js/faker": "^6.3.1",
