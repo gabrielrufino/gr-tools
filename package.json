@@ -13,7 +13,6 @@
     "dev": "npm uninstall -g gr-tools && npm link",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
-    "postinstall": "node ./src/scripts/postinstall.js",
     "reinstall": "npx rimraf node_modules && npm ci",
     "test": "jest",
     "test:cov": "npm run test -- --coverage"
@@ -44,7 +43,6 @@
     "folquire": "^1.0.30",
     "inquirer": "^7.3.3",
     "latest-version": "^5.1.0",
-    "omelette": "^0.4.17",
     "shelljs": "^0.8.5",
     "systeminformation": "^5.21.20"
   },
