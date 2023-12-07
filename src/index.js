@@ -41,4 +41,3 @@ cli
 cli.parse(process.argv);
 
 checkForUpdate({ name, version });
-
