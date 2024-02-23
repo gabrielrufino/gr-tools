@@ -6,24 +6,6 @@ on:
   - workflow_dispatch
 
 jobs:
-  tests:
-    name: Tests
-    strategy:
-      matrix:
-        node-version: [16, 18, 20]
-        os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm run test:cov
-      - uses: actions/upload-artifact@v3
-        with:
-          name: coverage
-          path: coverage
   node-ci:
     name: Node CI
     runs-on: ubuntu-latest

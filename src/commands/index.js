@@ -1,6 +1,5 @@
 const clone = require('./clone');
 const setup = require('./setup');
-const teardown = require('./teardown');
 const update = require('./update');
 
 const commands = [
@@ -14,11 +13,6 @@ const commands = [
     name: 'setup',
     command: 'setup [environment]',
     action: setup,
-  },
-  {
-    name: 'teardown',
-    command: 'teardown [environment]',
-    action: teardown,
   },
   {
     name: 'update',
