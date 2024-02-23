@@ -7,7 +7,6 @@ const { name, version } = require('../package.json');
 const banner = require('./banner');
 const clone = require('./commands/clone');
 const setup = require('./commands/setup');
-const teardown = require('./commands/teardown');
 const update = require('./commands/update');
 const { checkForUpdate } = require('./helpers');
 
@@ -32,11 +31,6 @@ cli
   .command('setup [environment]')
   .description('Makes the setup of an specific environment')
   .action(setup);
-
-cli
-  .command('teardown [environment]')
-  .description('Makes the teardown of an specific environment')
-  .action(teardown);
 
 cli.parse(process.argv);
 
