@@ -50,7 +50,6 @@
     "@faker-js/faker": "^6.3.1",
     "@gabrielrufino/eslint-config": "^1.6.0",
     "eslint": "^8.56.0",
-    "git-branch-is": "^4.0.0",
     "jest": "^27.5.1",
     "rimraf": "^5.0.5"
   }
