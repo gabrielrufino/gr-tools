@@ -1,7 +1,6 @@
 {
   "name": "gr-tools",
   "version": "13.0.1",
-  "description": "Commands to make my life easier",
   "main": "src/index.js",
   "engines": {
     "node": ">=16"
