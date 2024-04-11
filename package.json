@@ -9,7 +9,6 @@
     "linux"
   ],
   "scripts": {
-    "dev": "npm uninstall -g gr-tools && npm link",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
     "reinstall": "npx rimraf node_modules && npm ci",
