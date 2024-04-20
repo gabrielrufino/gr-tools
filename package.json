@@ -13,7 +13,8 @@
     "lint:fix": "npm run lint -- --fix",
     "reinstall": "npx rimraf node_modules && npm ci",
     "test": "jest",
-    "test:cov": "npm run test -- --coverage"
+    "test:cov": "npm run test -- --coverage",
+    "prepare": "husky"
   },
   "bin": {
     "gr-tools": "src/index.js"
@@ -45,9 +46,12 @@
     "systeminformation": "^5.22.7"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.2.2",
+    "@commitlint/config-conventional": "^19.2.2",
     "@faker-js/faker": "^6.3.1",
     "@gabrielrufino/eslint-config": "^1.6.0",
     "eslint": "^8.57.0",
+    "husky": "^9.0.11",
     "jest": "^27.5.1",
     "rimraf": "^5.0.5"
   }
