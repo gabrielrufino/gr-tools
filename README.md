@@ -22,16 +22,6 @@ gr-tools --version
 gr-tools --help
 ```
 
-### Scripts
-
-#### Development
-
-```sh
-npm run dev
-```
-
-Removes possible `gr-tools` globally installed and executes `npm link` for testing while developing.
-
 ## LICENSE
 
 The MIT License
