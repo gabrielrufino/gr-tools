@@ -42,7 +42,7 @@
     "inquirer": "^7.3.3",
     "latest-version": "^5.1.0",
     "shelljs": "^0.8.5",
-    "systeminformation": "^5.22.7"
+    "systeminformation": "^5.22.8"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
