@@ -17,7 +17,8 @@
     "postinstall": "husky"
   },
   "bin": {
-    "gr-tools": "src/index.js"
+    "gr-tools": "src/index.js",
+    "gr": "src/index.js"
   },
   "repository": {
     "type": "git",
