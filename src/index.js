@@ -2,7 +2,7 @@
 
 const cli = require('commander');
 
-const { name, version } = require('../package.json');
+const { bin, name, version } = require('../package.json');
 
 const banner = require('./banner');
 const update = require('./commands/update');
@@ -11,7 +11,7 @@ const { checkForUpdate } = require('./helpers');
 banner({ version });
 
 cli
-  .name(name)
+  .name(Object.keys(bin))
   .version(version);
 
 cli
