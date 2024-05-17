@@ -14,7 +14,7 @@
     "reinstall": "npx rimraf node_modules && npm ci",
     "test": "jest",
     "test:cov": "npm run test -- --coverage",
-    "postinstall": "husky"
+    "prepare": "husky"
   },
   "bin": {
     "gr-tools": "src/index.js",
