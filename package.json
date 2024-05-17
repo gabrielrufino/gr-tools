@@ -1,6 +1,6 @@
 {
   "name": "gr-tools",
-  "version": "15.1.0",
+  "version": "15.1.1",
   "main": "src/index.js",
   "engines": {
     "node": ">=16"
@@ -14,7 +14,7 @@
     "reinstall": "npx rimraf node_modules && npm ci",
     "test": "jest",
     "test:cov": "npm run test -- --coverage",
-    "postinstall": "husky"
+    "prepare": "husky"
   },
   "bin": {
     "gr-tools": "src/index.js",
