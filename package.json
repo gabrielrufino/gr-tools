@@ -38,7 +38,7 @@
     "commander": "^6.2.1",
     "compare-versions": "^3.6.0",
     "figlet": "^1.7.0",
-    "folquire": "^1.0.32",
+    "folquire": "^2.0.3",
     "inquirer": "^7.3.3",
     "latest-version": "^5.1.0",
     "shelljs": "^0.8.5",
@@ -47,7 +47,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.4.0",
     "@commitlint/config-conventional": "^19.2.2",
-    "@faker-js/faker": "^6.3.1",
+    "@faker-js/faker": "^8.4.1",
     "@gabrielrufino/eslint-config": "^1.6.0",
     "eslint": "^8.57.0",
     "husky": "^9.1.4",
