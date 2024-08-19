@@ -1,7 +1,6 @@
 const { notify } = require('../../helpers');
 
 const updateMe = require('./me');
-const updateRepositories = require('./repositories');
 const updateSystem = require('./system');
 
 const update = (software, commandObject) => {
@@ -9,9 +8,6 @@ const update = (software, commandObject) => {
     switch (software) {
       case 'system':
         updateSystem(commandObject);
-        break;
-      case 'repositories':
-        updateRepositories(commandObject);
         break;
       case 'me':
       case 'gr-tools':
