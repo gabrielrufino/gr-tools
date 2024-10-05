@@ -1,6 +1,6 @@
 {
   "name": "gr-tools",
-  "version": "16.0.0",
+  "version": "16.0.1",
   "main": "src/index.js",
   "engines": {
     "node": ">=16"
