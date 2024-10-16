@@ -16,7 +16,6 @@
     "prepare": "husky"
   },
   "bin": {
-    "gr-tools": "src/index.js",
     "gr": "src/index.js"
   },
   "repository": {
