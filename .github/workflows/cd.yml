@@ -9,17 +9,12 @@ on:
       - master
 
 jobs:
-  publish:
-    name: Publish
+  node-pkg-cd:
+    name: Node package CD
     runs-on: ubuntu-latest
     steps:
       - uses: gabrielrufino/check-ci@main
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - uses: gabrielrufino/node-pkg-cd@v1
         with:
-          node-version: 18
-          registry-url: 'https://registry.npmjs.org'
-      - run: npm ci
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          node-auth-token: ${{ secrets.NPM_TOKEN }}

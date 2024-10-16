@@ -1,6 +1,6 @@
 {
   "name": "gr-tools",
-  "version": "16.0.1",
+  "version": "17.0.0",
   "main": "src/index.js",
   "engines": {
     "node": ">=16"
@@ -16,7 +16,6 @@
     "prepare": "husky"
   },
   "bin": {
-    "gr-tools": "src/index.js",
     "gr": "src/index.js"
   },
   "repository": {
@@ -37,7 +36,7 @@
     "@gabrielrufino/is-required": "^1.0.20",
     "commander": "^6.2.1",
     "compare-versions": "^3.6.0",
-    "figlet": "^1.7.0",
+    "figlet": "^1.8.0",
     "folquire": "^2.0.3",
     "inquirer": "^7.3.3",
     "latest-version": "^5.1.0",
