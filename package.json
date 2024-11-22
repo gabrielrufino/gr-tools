@@ -1,6 +1,6 @@
 {
   "name": "gr-tools",
-  "version": "17.0.0",
+  "version": "17.0.1",
   "main": "src/index.js",
   "engines": {
     "node": ">=16"
@@ -37,19 +37,19 @@
     "commander": "^6.2.1",
     "compare-versions": "^3.6.0",
     "figlet": "^1.8.0",
-    "folquire": "^2.0.3",
+    "folquire": "^2.0.6",
     "inquirer": "^7.3.3",
     "latest-version": "^5.1.0",
     "shelljs": "^0.8.5",
     "systeminformation": "^5.23.5"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.5.0",
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
     "@faker-js/faker": "^8.4.1",
     "@gabrielrufino/eslint-config": "^1.6.0",
     "eslint": "^8.57.1",
-    "husky": "^9.1.6",
+    "husky": "^9.1.7",
     "jest": "^27.5.1"
   }
 }
